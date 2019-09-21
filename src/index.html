@@ -4,8 +4,36 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Document</title>
+	<title>Digital Agency</title>
 </head>
 <body>
+
+	<!-- Header -->
+	<header>
+		<nav id="desktop-header">
+			<div class="logo"><p>DigitalGrec</p></div>
+
+			<div class="modal-menu-icon" data-toggle-menu="show">
+				<div class="modal-bar"></div>
+			</div>
+		</nav>
+
+		<!-- Mobile Header-->
+		<!-- <div id="mobile-header"></div> -->
+		<!-- mobile header -->
+
+	</header>
+	<!-- header -->
+
+	<script>
+
+		document.querySelector('[data-toggle-menu="show"').addEventListener('click', (e) => {
+
+			e.currentTarget.childNodes[1].classList.toggle('close-test');
+
+			e.stopPropagation();
+		})
+
+	</script>
 </body>
 </html>
