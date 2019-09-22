@@ -1,5 +1,9 @@
 header {
-
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 5;
 	#desktop-header {
 		@include flex(row, space-between, center);
 		padding: 2rem;
@@ -7,6 +11,7 @@ header {
 	}
 
 	.modal-menu-icon {
+		position: relative;
 		background: rgba(0, 0, 0, .7);
 		width: 60px;
 		height: 60px;
@@ -19,7 +24,7 @@ header {
 			background: $white;
 			width: 17px;
 			height: 2px;
-			transform: rotate(45deg) translate(-8px, -8px);
+			transform: rotate(45deg) translate(-7.5px, -8.5px);
 			position: relative;
 			transition: all 500ms ease-in-out;
 
@@ -49,6 +54,16 @@ header {
 			transform: rotate(360deg);
 			box-shadow: 0 0 30px 5px $green-primary;
 		}
+	}
+
+	.logo {
+		@include font(2rem, inherit, 400);
+		font-family: 'Mansalva', cursive;
+		letter-spacing: .55rem;
+	}
+
+	&:hover .left-triangle, .right-triangle, .mid-triangle {
+		transform: 0;
 	}
 }
 

@@ -33,8 +33,9 @@ footer, header, hgroup, menu, nav, section {
 }
 
 body {
-	font: normal 1rem/1.5 sans-serif;
-	background: #411b5d;
+	font: normal 1rem/1.5 'Roboto', sans-serif;;
+	overflow-x: hidden;
+	height: 5000px;
 }
 
 ol, ul {
@@ -73,3 +74,19 @@ a, button {
 	text-transform: inherit;
 	font-size: inherit;
 }
+
+/*** Utiltiy Classes ***/
+/** Text **/
+/* Titles & Descriptions */
+.heading-title { font-family: 'Lora', serif }
+
+/* Alignment */
+.text-left { text-align: left }
+.text-center { text-align: center }
+.text-right { text-align: right }
+
+/** Margins && Paddings **/
+.mb-xs { margin-bottom: .85rem }
+.mb-sm { margin-bottom: 1rem }
+.mb-xm { margin-bottom: 1.35rem }
+.mb-md { margin-bottom: 1.5em }

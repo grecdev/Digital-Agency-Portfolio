@@ -1,0 +1,56 @@
+#showcase {
+	width: 100vw;
+	height: 100vh;
+	background: #00e06d;
+	background: linear-gradient(9deg, #00e06d -10%, #411b5d 45%);
+	color: #fff;
+	
+	.showcase-container {
+		width: 100%;
+		height: 100%;
+		@include flex(row, space-between, center);
+		position: relative;
+
+		.showcase-content {
+			width: 38%;
+			position: absolute;
+			left: 150px;
+			z-index: 1;
+
+			h1 {
+				@include font(4rem, inherit, 400);
+				line-height: 80px;
+			}
+		}
+	}
+}
+
+/** Animation Boxes (Moving on cursor move) **/
+.showcase-animation-container {
+	position: absolute;
+	right: 350px;
+	width: 400px;
+	height: 400px;
+
+	svg {
+		position: absolute;
+		top: 0;
+		left: 0;
+		overflow: visible !important;
+		width: 100%;
+		height: 100%;
+	}
+}
+
+/*** Page load animation ***/
+.left-triangle, .mid-triangle, .right-triangle { transform-origin: center center }
+
+.left-triangle { animation: left-triangle 1s ease-in-out forwards 100ms }
+.mid-triangle { animation: mid-triangle 1s ease-in-out forwards 100ms }
+.right-triangle { animation: right-triangle 1s ease-in-out forwards 100ms }
+
+@keyframes left-triangle { to { transform: translate(-180px, -70px) rotate(-50deg) } }
+
+@keyframes mid-triangle { to { transform: translate(100px, 130px) rotate(30deg) } }
+
+@keyframes right-triangle { to { transform: translate(150px, -150px) rotate(50deg) } }
