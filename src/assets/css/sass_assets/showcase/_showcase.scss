@@ -30,7 +30,7 @@
 	position: absolute;
 	right: 50px;
 	width: 1200px;
-	height: 670px;
+	height: 728px;
 
 	svg {
 		position: absolute;
@@ -53,12 +53,12 @@
 }
 
 .right-triangle-static {
-	transform: translate(140px, -120px) rotate(40deg);
+	transform: translate(140px, -120px) rotate(25deg);
 	transform-origin: 75% 45%;
 }
 
-/** After the intro remove intro classes and add moving classes **/
-.left-triangle-intro,
-.mid-triangle-intro,
-.right-triangle-intro { transition: transform 1s ease-in-out 800ms }
+/** Intro transition speed **/
+.intro-transition { transition: transform 1s ease-in-out 800ms }
 
+/* Moving transition speed so it won't instant move */
+.moving-animation { transition: transform 70ms ease-in-out }
