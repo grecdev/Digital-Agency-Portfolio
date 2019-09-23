@@ -28,29 +28,37 @@
 /** Animation Boxes (Moving on cursor move) **/
 .showcase-animation-container {
 	position: absolute;
-	right: 350px;
-	width: 400px;
-	height: 400px;
+	right: 50px;
+	width: 1200px;
+	height: 670px;
 
 	svg {
 		position: absolute;
 		top: 0;
 		left: 0;
-		overflow: visible !important;
 		width: 100%;
 		height: 100%;
 	}
 }
 
 /*** Page load animation ***/
-.left-triangle, .mid-triangle, .right-triangle { transform-origin: center center }
+.left-triangle-static {
+	transform: translate(-270px, 60px) rotate(-70deg);
+	transform-origin: center center;
+}
 
-.left-triangle { animation: left-triangle 1s ease-in-out forwards 100ms }
-.mid-triangle { animation: mid-triangle 1s ease-in-out forwards 100ms }
-.right-triangle { animation: right-triangle 1s ease-in-out forwards 100ms }
+.mid-triangle-static {
+	transform: translate(-150px, 160px) rotate(10deg);
+	transform-origin: 68% 62%;
+}
 
-@keyframes left-triangle { to { transform: translate(-180px, -70px) rotate(-50deg) } }
+.right-triangle-static {
+	transform: translate(140px, -120px) rotate(40deg);
+	transform-origin: 75% 45%;
+}
 
-@keyframes mid-triangle { to { transform: translate(100px, 130px) rotate(30deg) } }
+/** After the intro remove intro classes and add moving classes **/
+.left-triangle-intro,
+.mid-triangle-intro,
+.right-triangle-intro { transition: transform 1s ease-in-out 800ms }
 
-@keyframes right-triangle { to { transform: translate(150px, -150px) rotate(50deg) } }

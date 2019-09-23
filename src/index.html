@@ -40,13 +40,26 @@
 			</div>
 
 			<div class="showcase-animation-container">
+				<svg width="1200" height="670" viewBox="0 0 1200 670" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<g filter="url(#filter0_f)">
 
-				<svg width="275" height="226" viewBox="0 0 275 226" fill="none" xmlns="http://www.w3.org/2000/svg">
-					<path class="left-triangle" d="M5.68527 125.25L64.5 6.74804L123.315 125.25H5.68527Z" stroke="black" stroke-width="6"/>
-					<path class="mid-triangle" d="M196.315 100.75L137.5 219.252L78.6853 100.75H196.315Z" stroke="black" stroke-width="6"/>
-					<path class="right-triangle" d="M152.604 125.25L211 6.78515L269.396 125.25H152.604Z" stroke="black" stroke-width="6"/>
+						<path class="left-triangle-intro left-triangle-static shape-animation" d="M632.359 375.75L713.603 190.706L794.846 375.75H632.359Z" stroke="black" stroke-width="7"/>
+
+						<path class="mid-triangle-intro mid-triangle-static shape-animation" d="M896.871 332.25L815.205 517.33L733.539 332.25H896.871Z" stroke="black" stroke-width="7"/>
+
+						<path class="right-triangle-intro right-triangle-static shape-animation" d="M834.462 375.75L915.705 190.706L996.948 375.75H834.462Z" stroke="black" stroke-width="7"/>
+					</g>
+
+					<defs>
+
+						<filter id="filter0_f" x="-7" y="-7" width="1214" height="684" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+							<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+							<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+							<feGaussianBlur stdDeviation="3.5" result="effect1_foregroundBlur"/>
+						</filter>
+
+					</defs>
 				</svg>
-
 			</div>
 
 		</div>
@@ -56,12 +69,80 @@
 	<!-- TESTING -->
 	<script>
 
+		// Close modal icon
 		document.querySelector('[data-toggle-menu="show"').addEventListener('click', (e) => {
 
 			e.currentTarget.childNodes[1].classList.toggle('close-test');
 
 			e.stopPropagation();
 		});
+
+		setTimeout(() => {
+			// Move shapes on cursor move
+			document.querySelector('.showcase-container').addEventListener('mousemove', (e) => {
+
+				// Move shapes on cursor move
+				moveThings(e);
+
+				e.stopPropagation();
+			});
+		}, 2000);
+
+		// Move shapes on cursor move
+		function moveThings(e) {
+
+			// INSIDE PARENTHESES => cursor goes to right
+			// OUTSIDE PARENTHESES => cursor goes to left
+			// The numbers: 270 / 60 / 150 / 160 / 140 / 120 are the values from css property e.g: translate(-270px, 60px)
+
+			// Left triangle
+			// Get the mouse position animation
+			const mousePosLeftX = (e.clientX * -0.0270) - 270;
+			const mousePosLeftY = (e.clientY * 0.060) + 60;
+
+			// Get the element
+			const left = document.querySelector('.left-triangle-static');
+
+			// Apply the styles to the element
+			// We need to have the rotate aswell so it won't reset the value from scss file
+			left.style.transform = `translate(${mousePosLeftX}px, ${mousePosLeftY}px) rotate(-70deg)`;
+
+			// Mid triangle
+			// Get the mouse position animation
+			const mousePosMidX = (e.clientX * -0.0150) - 150;
+			const mousePosMidY = (e.clientY * 0.0160) + 160;
+
+			// Get the element
+			const mid = document.querySelector('.mid-triangle-static');
+
+			// Apply the styles to the element
+			// We need to have the rotate aswell so it won't reset the value from scss file
+			mid.style.transform = `translate(${mousePosMidX}px, ${mousePosMidY}px) rotate(10deg)`;
+
+			// Right triangle
+			// Get the mouse position animation
+			const mousePosRightX = (e.clientX * 0.0140) + 140;
+			const mousePosRightY = (e.clientY * -0.0120) - 120;
+
+			// Get the element
+			const right = document.querySelector('.right-triangle-static');
+
+			// Apply the styles to the element
+			// We need to have the rotate aswell so it won't reset the value from scss file
+			right.style.transform = `translate(${mousePosRightX}px, ${mousePosRightY}px) rotate(40deg)`;
+
+			// Please appreciate this because it took 2 days to figure out the movement ( yes i am a noob )
+		}
+
+		setTimeout(() => {
+			document.querySelectorAll('.shape-animation').forEach(shape => {
+
+
+				shape.classList.remove('left-triangle-intro', 'mid-triangle-intro', 'right-triangle-intro');
+
+
+			});
+		}, 2000);
 
 	</script>
 </body>
