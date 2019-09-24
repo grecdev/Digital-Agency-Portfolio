@@ -8,16 +8,13 @@ export const globalFunctionality = (() => {
 	function init() {
 		
 		// Event Listeners
-		document.addEventListener('DOMContentLoaded', load);
-
-		// Function Helpers
-		function load(e) {
-
+		document.addEventListener('DOMContentLoaded', (e) => {
+			
 			// Disable showcase animations on mobile devices
 			ui.movingCursorAnimate(e);
 
 			e.stopPropagation();
-		}
+		});
 		
 	}
 

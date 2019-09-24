@@ -19,7 +19,7 @@ export const showcaseFunctionality = (() => {
 
 				e.stopPropagation();
 			});
-			
+
 		}, 2000);
 
 	}

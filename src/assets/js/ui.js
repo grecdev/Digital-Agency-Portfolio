@@ -5,6 +5,10 @@ class Ui {
 	constructor() {
 		// Ui Elements
 		this.shapeAnimations = document.querySelectorAll('.shape-animation');
+		this.header = document.querySelector('header');
+		this.left_shape = document.querySelector('.shape-left');
+		this.mid_shape = document.querySelector('.shape-mid');
+		this.right_shape = document.querySelector('.shape-right');
 		// Menus / Sections
 		this.showcase_container = document.querySelector('.showcase-container');
 		// Buttons
@@ -15,46 +19,62 @@ class Ui {
 	movingCursorAnimate(e) {
 		if(window.matchMedia('(min-width: 1025px)').matches && e.type === 'mousemove') {
 
-			// INSIDE PARENTHESES => cursor goes to right
-			// OUTSIDE PARENTHESES => cursor goes to left
-			// The numbers: 270 / 60 / 150 / 160 / 140 / 120 are the values from css property e.g: translate(-270px, 60px)
-	
+			// The numbers are the values from css property e.g: translate(-270px, 60px)
+				
 			// Left triangle
 			// Get the mouse position animation
+
+			// INSIDE PARENTHESES => cursor goes to RIGHT
+			// OUTSIDE PARENTHESES => cursor goes to LEFT
 			const mousePosLeftX = (e.clientX * -0.0270) - 270;
-			const mousePosLeftY = (e.clientY * 0.060) + 60;
-	
-			// Get the element
-			const left = document.querySelector('.left-triangle-static');
-	
+			// INSIDE PARENTHESES => cursor goes to DOWN
+			// OUTSIDE PARENTHESES => cursor goes to UP
+			const mousePosLeftY = (e.clientY * -0.0600) + 100;
+			
 			// Apply the styles to the element
 			// We need to have the rotate aswell so it won't reset the value from scss file
-			left.style.transform = `translate(${mousePosLeftX}px, ${mousePosLeftY}px) rotate(-70deg)`;
+			if(this.left_shape.classList.contains('left-static')) {
+
+				this.left_shape.style.transform = `translate(${mousePosLeftX}px, ${mousePosLeftY}px) rotate(-70deg)`;
+
+			}
 			
 			// Mid triangle
 			// Get the mouse position animation
-			const mousePosMidX = (e.clientX * -0.0150) - 150;
-			const mousePosMidY = (e.clientY * 0.0160) + 160;
-	
-			// Get the element
-			const mid = document.querySelector('.mid-triangle-static');
+
+			// INSIDE PARENTHESES => cursor goes to RIGHT
+			// OUTSIDE PARENTHESES => cursor goes to LEFT
+			const mousePosMidX = (e.clientX * -0.0250) - 150;
+			// INSIDE PARENTHESES => cursor goes to DOWN
+			// OUTSIDE PARENTHESES => cursor goes to UP
+			const mousePosMidY = (e.clientY * -0.0565) + 165;
 	
 			// Apply the styles to the element
 			// We need to have the rotate aswell so it won't reset the value from scss file
-			mid.style.transform = `translate(${mousePosMidX}px, ${mousePosMidY}px) rotate(10deg)`;
+			if(this.mid_shape.classList.contains('mid-static')) {
+
+				this.mid_shape.style.transform = `translate(${mousePosMidX}px, ${mousePosMidY}px) rotate(10deg)`;
+
+			}
 	
 			// Right triangle
 			// Get the mouse position animation
-			const mousePosRightX = (e.clientX * 0.0140) + 140;
-			const mousePosRightY = (e.clientY * -0.0120) - 120;
-	
-			// Get the element
-			const right = document.querySelector('.right-triangle-static');
-	
+
+			// INSIDE PARENTHESES => cursor goes to RIGHT
+			// OUTSIDE PARENTHESES => cursor goes to LEFT
+			const mousePosRightX = (e.clientX * -0.0140) + 140;
+			// INSIDE PARENTHESES => cursor goes to DOWN
+			// OUTSIDE PARENTHESES => cursor goes to UP
+			const mousePosRightY = (e.clientY * -0.0700) - 120;
+
 			// Apply the styles to the element
 			// We need to have the rotate aswell so it won't reset the value from scss file
-			right.style.transform = `translate(${mousePosRightX}px, ${mousePosRightY}px) rotate(25deg)`;
-			
+			if(this.right_shape.classList.contains('right-static')) {
+
+				this.right_shape.style.transform = `translate(${mousePosRightX}px, ${mousePosRightY}px) rotate(25deg)`;
+
+			}
+
 		}
 
 		// After the moving animation ends remove the intro transition
@@ -62,13 +82,20 @@ class Ui {
 		if(window.matchMedia('(min-width: 1025px)').matches && e.type === 'DOMContentLoaded') {
 
 			setTimeout(() => {
-				ui.shapeAnimations.forEach(shape => {
 
-					shape.classList.remove('intro-transition');
-					shape.classList.add('moving-animation');
+				// Remove the intro animation from each shape
+				this.shapeAnimations.forEach(shape => {
 
+					shape.classList.remove('left-intro', 'mid-intro', 'right-intro');
+				
 				});
-			}, 2000);
+
+				// Add the static animation for individual shape
+				this.left_shape.classList.add('left-static');
+				this.mid_shape.classList.add('mid-static');
+				this.right_shape.classList.add('right-static');
+
+			}, 1750);
 
 		}
 
@@ -78,7 +105,7 @@ class Ui {
 
 			this.shapeAnimations.forEach(shape => {
 
-				shape.classList.remove('intro-transition', 'moving-animation', 'left-triangle-static', 'mid-triangle-static', 'right-triangle-static');
+				shape.classList.remove('left-intro', 'mid-intro', 'right-intro', 'left-static', 'mid-static', 'right-static');
 
 			});
 
