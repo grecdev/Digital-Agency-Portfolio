@@ -7,28 +7,21 @@ export const showcaseFunctionality = (() => {
 
 	function init() {
 
+		// Event Listeners
 		// After removing the transition intro animation enable the event listener
 		setTimeout(() => {
-			// Move shapes on cursor move
+
+			// Move shapes on cursor move listener
 			ui.showcase_container.addEventListener('mousemove', (e) => {
 
 				// Move shapes on cursor move
-				ui.moveThings(e);
+				ui.movingCursorAnimate(e);
 
 				e.stopPropagation();
 			});
+			
 		}, 2000);
 
-		// After the moving animation ends remove the transition
-		setTimeout(() => {
-			document.querySelectorAll('.shape-animation').forEach(shape => {
-
-				shape.classList.remove('intro-transition');
-				shape.classList.add('moving-animation');
-
-			});
-		}, 2000);
-		
 	}
 
 	return {

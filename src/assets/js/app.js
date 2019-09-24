@@ -8,5 +8,7 @@ require('isomorphic-fetch');
 
 // Individual functionality for each file
 import { showcaseFunctionality } from './showcase/showcase.js';
+import { globalFunctionality } from './global.js';
 
 showcaseFunctionality.init();
+globalFunctionality.init();
