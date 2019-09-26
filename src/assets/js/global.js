@@ -15,7 +15,7 @@ export const globalFunctionality = (() => {
 
 			e.stopPropagation();
 		});
-		
+
 	}
 
 	return {

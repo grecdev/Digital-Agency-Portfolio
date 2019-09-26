@@ -1,18 +1,19 @@
+@import url('https://fonts.googleapis.com/css?family=Merriweather:300,400,700&display=swap');
+
 header {
 	position: fixed;
 	top: 0;
 	left: 0;
 	width: 100%;
-	z-index: 5;
+	z-index: 10;
 
-	#desktop-header {
+	#navigation-header {
 		@include flex(row, space-between, center);
 		padding: 2rem;
 		color: $white;
-		
 	}
 
-	.modal-menu-icon {
+	#modal-menu-icon {
 		position: relative;
 		background: rgba(0, 0, 0, .7);
 		width: 60px;
@@ -21,6 +22,7 @@ header {
 		@include flex(row, center, center);
 		cursor: pointer;
 		transition: all 500ms ease-in-out;
+		z-index: 10;
 
 		.modal-bar {
 			background: $white;
@@ -62,20 +64,122 @@ header {
 		@include font(2rem, inherit, 400);
 		font-family: 'Mansalva', cursive;
 		letter-spacing: .55rem;
+		z-index: 10;
 	}
 
-	&:hover .left-triangle, .right-triangle, .mid-triangle {
-		transform: 0;
+	&:hover .left-triangle, .right-triangle, .mid-triangle { transform: 0 }
+}
+
+/*** Desktop && Mobile modal menu ***/
+/** Desktop **/
+#desktop-modal-menu {
+	background: darken($purple-primary, 15%);
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	z-index: 9;
+	@include flex(column, center, center);
+	display: none;
+	padding-top: 5rem;
+
+	.modal-link {
+		font-family: 'Merriweather', serif;
+		width: 20%;
+		background: $white;
+		margin: 1rem 0;
+		padding: 2rem 0;
+		text-align: center;
+		font-size: 2rem;
+		position: relative;
+		overflow: hidden;
+		z-index: 1;
+
+		&::before {
+			content: '';
+			position: absolute;
+			top: 60%;
+			left: 50%;
+			width: 130px;
+			height: 20px;
+			background: #00e06d;
+			transform: translate(-50%, -50%) scaleX(0);
+			transition: transform 1s ease-in-out;
+			transform-origin: left center;
+			z-index: -1;
+		}
+	
+		&:hover::before { transform: translate(-50%, -50%) scaleX(1) }
 	}
 }
 
-/** Closing icon **/
-.close-test {
+/** Close icon **/
+.close-icon {
 	transform: rotate(45deg) translate(0, 0) !important;
 
-	&::before { transform: rotate(0) translate(0, 0) !important }
+	&::after { transform: rotate(0) translate(0, 0) !important }
 
-	&::after { transform: rotate(90deg) translate(0, 0) !important }
+	&::before { transform: rotate(90deg) translate(0, 0) !important }
 }
 
+/* Intro / Outro modal animation */
+.intro-link {
 
+	&:nth-child(odd) {
+		animation: left-intro 1.2s ease-in-out forwards 200ms;
+		transform: translateX(-250px);
+		opacity: 0;
+	}
+
+	&:nth-child(even) {
+		animation: right-intro 1.2s ease-in-out forwards 200ms;
+		transform: translateX(250px);
+		opacity: 0;
+	}
+
+}
+
+.outro-link {
+
+	&:nth-child(odd) {
+		animation: left-out 1.2s ease-in-out forwards 200ms;
+		transform: translateX(0);
+		opacity: 1;
+	}
+
+	&:nth-child(even) {
+		animation: right-out 1.2s ease-in-out forwards 200ms;
+		transform: translateX(0);
+		opacity: 1;
+	}
+
+}
+
+@keyframes left-intro {
+	to {
+		transform: translateX(0);
+		opacity: 1;
+	}
+}
+
+@keyframes right-intro {
+	to {
+		transform: translateX(0);
+		opacity: 1;
+	}
+}
+
+@keyframes left-out {
+	to {
+		transform: translateX(-250px);
+		opacity: 0;
+	}
+}
+
+@keyframes right-out {
+	to {
+		transform: translateX(250px);
+		opacity: 0;
+	}
+}

@@ -11,20 +11,26 @@
 
 	<!-- Header -->
 	<header>
-		<nav id="desktop-header">
+		<nav id="navigation-header">
 			<div class="logo"><p>Digital Grec</p></div>
 
-			<div class="modal-menu-icon" data-toggle-menu="show">
+			<div id="modal-menu-icon" data-toggle="show">
 				<div class="modal-bar"></div>
 			</div>
 		</nav>
-
-		<!-- Mobile Header-->
-		<!-- <div id="mobile-header"></div> -->
-		<!-- mobile header -->
-
 	</header>
 	<!-- header -->
+
+	<!-- Desktop Modal menu -->
+	<div id="desktop-modal-menu">
+		
+		<a class="modal-link">LINK 1</a>
+		<a class="modal-link">LINK 2</a>
+		<a class="modal-link">LINK 3</a>
+		<a class="modal-link">LINK 4</a>
+
+	</div>
+	<!-- desktop modal menu -->
 
 	<!-- Showcase -->
 	<section id="showcase">
@@ -39,15 +45,15 @@
 
 			</div>
 
-			<div class="showcase-animation-container">
+			<div class="showcase-animation-container desktop-animation">
 				<svg width="1200" height="720" viewBox="0 0 1200 720" fill="none" xmlns="http://www.w3.org/2000/svg">
 
 					<g filter="url(#filter0_f)">
-						<path class="left-intro shape-animation shape-left" d="M674 380.36L752.662 207L831.322 380.36H674Z" stroke="black" stroke-width="7"/>
+						<path class="left-intro shape-animation shape-left" d="M674 380.36L752.662 207L831.322 380.36H674Z" stroke="black" stroke-width="3"/>
 
-						<path class="mid-intro shape-animation shape-mid" d="M930.104 339.607L851.034 513L771.964 339.607H930.104Z" stroke="black" stroke-width="7"/>
+						<path class="mid-intro shape-animation shape-mid" d="M930.104 339.607L851.034 513L771.964 339.607H930.104Z" stroke="black" stroke-width="3"/>
 
-						<path class="right-intro shape-animation shape-right" d="M869.679 380.36L948.339 207L1027 380.36H869.679Z" stroke="black" stroke-width="7"/>
+						<path class="right-intro shape-animation shape-right" d="M869.679 380.36L948.339 207L1027 380.36H869.679Z" stroke="black" stroke-width="3"/>
 					</g>
 
 					<defs>
@@ -55,10 +61,14 @@
 							<feFlood flood-opacity="0" result="BackgroundImageFix"/>
 							<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
 							<!-- stdDeviation - triangles opacity (if you want to change) -->
-							<feGaussianBlur stdDeviation="4" result="effect1_foregroundBlur"/>
+							<feGaussianBlur stdDeviation="3" result="effect1_foregroundBlur"/>
 						</filter>
 					</defs>
 				</svg>
+			</div>
+
+			<div class="showcase-animation-container mobile-animation">
+				
 			</div>
 
 		</div>

@@ -15,17 +15,26 @@ export const headerFunctionality = (() => {
 
 			e.stopPropagation();
 		});
+
+		// Show / Hide modal menu
+		ui.header_icon.addEventListener('click', (e) => {
+
+			ui.headerModal(e);
+
+			e.stopPropagation();
+		});
+
+		// Show / Hide modal menu
+		ui.header_modal.addEventListener('click', (e) => {
+
+			ui.headerModal(e);
+
+			e.stopPropagation();
+		});
+
 	}
 
 	return {
 		init
 	}
 })();
-
-// // Close modal icon
-// document.querySelector('[data-toggle-menu="show"').addEventListener('click', (e) => {
-
-// 	e.currentTarget.childNodes[1].classList.toggle('close-test');
-
-// 	e.stopPropagation();
-// });
