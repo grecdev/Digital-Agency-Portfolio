@@ -1,5 +1,9 @@
 footer {
 	background: $gray-primary;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
 
 	.container { padding: 1rem}
 

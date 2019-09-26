@@ -5,6 +5,8 @@
 	box-sizing: border-box;
 }
 
+html { height: 100% }
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -36,6 +38,7 @@ body {
 	font: normal 1rem/1.5 'Roboto', sans-serif;
 	overflow-x: hidden;
 	position: relative;
+	min-height: 100%;
 }
 
 ol, ul {
@@ -124,5 +127,6 @@ a, button {
 		height: 3px;
 		background: linear-gradient(to left, $purple-primary, $green-primary);
 	}
-	
 }
+
+.footer-spacing { padding-bottom: $footer-height-desktop }

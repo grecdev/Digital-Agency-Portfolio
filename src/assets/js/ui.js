@@ -55,7 +55,7 @@ class Ui {
 			document.getElementById('desktop-modal-menu').classList.remove('visible-flex');
 
 			// On mobile devices enable the intro animation
-			if(window.matchMedia('(min-width: 1025px)').matches) {
+			if(window.matchMedia('(min-width: 1025px)').matches && document.body.contains(ui.showcase)) {
 
 				ui.left_shape.classList.add('left-intro');
 				ui.mid_shape.classList.add('mid-intro');
@@ -72,11 +72,12 @@ class Ui {
 		// Get the page position
 		const pos = window.pageYOffset;
 
-		// Enable header fixed on desltop devices
-		if(window.matchMedia('(min-width: 1025px)').matches) {
+		// Enable header fixed on desktop devices and home page
+		if(window.matchMedia('(min-width: 1025px)').matches && location.pathname.includes('index') || location.pathname.includes('/')) {
 
-			if(pos > 50) ui.header.classList.add('test-class')
-			else ui.header.classList.remove('test-class')
+			// Disable it when header modal menu is visible
+			if(pos > 50 && !ui.header_modal.classList.contains('visible-flex')) ui.header.classList.add('header-fixed')
+			else ui.header.classList.remove('header-fixed')
 
 		}
 		
