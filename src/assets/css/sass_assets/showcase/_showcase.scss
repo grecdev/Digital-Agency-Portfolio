@@ -4,7 +4,7 @@
 	background: #00e06d;
 	background: linear-gradient(9deg, #00e06d -10%, #411b5d 45%);
 	color: #fff;
-	position: absolute;
+	position: relative;
 	
 	.showcase-container {
 		width: 100%;
@@ -67,7 +67,7 @@
 .right-intro, .right-static { transform-origin: 75% 45% }
 
 /* Added transition so it won't change the positionn instantly */
-.transition-enabled { transition: transform 50ms ease-in-out }
+.transition-enabled { transition: transform 80ms ease-in-out }
 
 @keyframes left-triangle {
 	from { transform: translate(0,0) rotate(0) }

@@ -1,0 +1,58 @@
+#skills {
+	background: darken($purple-primary, 10%);
+	color: $white;
+	
+	.container { max-width: 1500px }
+
+	.section-header {
+		transform: translateY(-40px);
+		opacity: 0;
+
+		&::after { background: linear-gradient(to right, $white, $green-primary) }
+	}
+	.skills-container {
+		@include flex(row, space-around, center);
+		
+		.skills-box {
+			
+
+			li {
+				padding: .5rem;
+				font-size: 1.3rem;
+				@include flex(row, flex-start, center);
+
+				i {
+					margin-right: 1rem;
+					font-size: 2rem;
+				}
+
+				a { display: block }
+			}
+		}
+	}
+}
+
+/*** Skills Section Animations ***/
+.skills-intro { animation: skills-intro 1s ease-in-out forwards }
+.skill-header-intro { animation: skillsHeader-intro 1s ease-in-out forwards 700ms }
+
+@keyframes skills-intro {
+	from {
+		opacity: 0;
+		transform: translate(-170px, -70px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translate(0, 0);
+	}
+}
+
+@keyframes skillsHeader-intro {
+
+	to {
+		transform: translateY(0);
+		opacity: 1;
+	}
+
+}

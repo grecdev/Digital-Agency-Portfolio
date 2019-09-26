@@ -1,0 +1,11 @@
+#partners {
+	padding: 2rem;
+	background: $gray-primary;
+
+	.partners-container { @include flex(row, center, center) }
+
+	.partners-box {
+		width: 20%;
+		margin: 0 3rem;
+	}
+}

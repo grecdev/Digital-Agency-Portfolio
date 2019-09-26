@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css?family=Big+Shoulders+Display:400,500&display=swap');
+
+#steps {
+
+	.steps-container { @include grid(repeat(3, 1fr), 1rem) }
+	
+	.steps-box {
+		padding: 2rem;
+
+		.steps-box-header {
+			font-size: 3rem;
+
+			.steps-icon i {
+				background: #d6249f;
+				background: radial-gradient(circle at 30% 107%, $green-primary, $purple-primary);
+				background-clip: text;
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+			}
+
+			.steps-step {
+				font-family: 'Big Shoulders Display', cursive;
+				margin-right: 1rem;
+			}
+		}
+
+		.steps-box-description {
+			
+			h4 { font-size: 1.5rem }
+		}
+
+	}
+}

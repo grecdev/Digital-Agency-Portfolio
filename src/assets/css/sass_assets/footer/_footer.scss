@@ -1,0 +1,49 @@
+footer {
+	background: $gray-primary;
+
+	.container { padding: 1rem}
+
+	.footer-header {
+		padding: 2rem;
+		background: darken($purple-primary, 10%);
+		color: $white;
+		
+		@include flex(column, center, center);
+
+		.footer-header-container {
+			@include flex(row, space-between, center);
+			width: 35%;
+
+			h3 { @include font(2rem, inherit, 400) }
+			p { @include font(1.3rem, inherit, 400) }
+
+			span i {
+				font-size: 3rem;
+				background: linear-gradient(to left, darken($white, 15%), darken($green-primary, 5%));
+				background-clip: text;
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+			}
+		}
+	}
+
+	.footer-content {
+		@include flex(row, space-around, center);
+
+		.footer-box:first-child p { font-size: 1rem }
+
+		.footer-social {
+
+			a {
+				margin: 0 .5rem;
+				transition: color 200ms ease-in-out;
+
+				&:hover { color: lightseagreen }
+
+			}
+		}
+
+		.footer-address li { margin: .5rem 0 }
+	}
+
+}

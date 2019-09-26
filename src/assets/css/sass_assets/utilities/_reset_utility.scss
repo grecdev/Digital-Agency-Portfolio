@@ -33,9 +33,8 @@ footer, header, hgroup, menu, nav, section {
 }
 
 body {
-	font: normal 1rem/1.5 'Roboto', sans-serif;;
+	font: normal 1rem/1.5 'Roboto', sans-serif;
 	overflow-x: hidden;
-	height: 5000px;
 	position: relative;
 }
 
@@ -77,6 +76,14 @@ a, button {
 }
 
 /*** Utiltiy Classes ***/
+.container {
+	margin: 0 auto;
+	max-width: 1200px;
+	height: 100%;
+	overflow: hidden;
+	padding: 2rem;
+}
+
 /** Text **/
 /* Titles & Descriptions */
 .heading-title { font-family: 'Lora', serif }
@@ -95,3 +102,27 @@ a, button {
 /** Show menus **/
 .visible-block { display: block !important }
 .visible-flex { display: flex !important }
+
+/** Sections **/
+/* Section Header */
+.section-header {
+	@include flex(column, center, center);
+	position: relative;
+	width: 35%;
+	margin: 0 auto 2rem;
+	padding-bottom: .5rem;
+
+	h2 { @include font(2rem, inherit, 300) }
+
+	&::after {
+		content: '';
+		position: absolute;
+		bottom: 0;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 100px;
+		height: 3px;
+		background: linear-gradient(to left, $purple-primary, $green-primary);
+	}
+	
+}
