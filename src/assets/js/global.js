@@ -7,11 +7,9 @@ export const globalFunctionality = (() => {
 
 	function init() {
 		
-		// Event Listeners
-		document.addEventListener('DOMContentLoaded', (e) => {
-			
-			// Disable showcase animations on mobile devices
-			ui.movingCursorAnimate(e);
+		window.addEventListener('scroll', (e) => {
+
+			ui.scrollFunctionality(e);
 
 			e.stopPropagation();
 		});

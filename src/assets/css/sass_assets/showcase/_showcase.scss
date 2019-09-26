@@ -46,28 +46,22 @@
 
 /*** Page load animation ***/
 /* Left shape */
-.left-intro { animation: left-triangle 1s ease-in-out 800ms forwards }
-
-.left-static { transform: translate(-270px, 60px) rotate(-70deg) }
-
-.left-intro, .left-static { transform-origin: center center }
+.left-intro {
+	animation: left-triangle 1s ease-in-out 800ms forwards;
+	transform-origin: center center
+}
 
 /* Mid shape */
-.mid-intro { animation: mid-triangle 1s ease-in-out 800ms forwards }
-
-.mid-static { transform: translate(-150px, 160px) rotate(10deg) } 
-
-.mid-intro, .mid-static { transform-origin: 68% 62%; }
+.mid-intro {
+	animation: mid-triangle 1s ease-in-out 800ms forwards;
+	transform-origin: 68% 62%;
+}
 
 /* Right shape */
-.right-intro { animation: right-triangle 1s ease-in-out 800ms forwards }
-
-.right-static { transform: translate(140px, -120px) rotate(25deg) }
-
-.right-intro, .right-static { transform-origin: 75% 45% }
-
-/* Added transition so it won't change the positionn instantly */
-.transition-enabled { transition: transform 80ms ease-in-out }
+.right-intro {
+	animation: right-triangle 1s ease-in-out 800ms forwards;
+	transform-origin: 75% 45%
+}
 
 @keyframes left-triangle {
 	from { transform: translate(0,0) rotate(0) }
