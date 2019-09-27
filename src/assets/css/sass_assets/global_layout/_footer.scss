@@ -1,5 +1,6 @@
 footer {
-	background: $white;
+	background: $pink-primary;
+	color: $white;
 	position: absolute;
 	bottom: 0;
 	left: 0;
@@ -23,7 +24,7 @@ footer {
 
 			span i {
 				font-size: 3rem;
-				background: linear-gradient(to left, darken($white, 15%), darken($green-primary, 5%));
+				background: $pink-primary;
 				background-clip: text;
 				-webkit-background-clip: text;
 				-webkit-text-fill-color: transparent;
@@ -42,16 +43,11 @@ footer {
 				margin: 0 .5rem;
 				transition: color 200ms ease-in-out;
 
-				&:hover { color: lightseagreen }
+				&:hover { color: lighten($purple-primary, 15%) }
 
 			}
 		}
 
 		.footer-address li { margin: .5rem 0 }
 	}
-}
-
-.contact-footer {
-	background: $pink-primary;
-	color: $white;
 }

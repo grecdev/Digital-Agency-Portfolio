@@ -8,7 +8,7 @@
 		transform: translateY(-40px);
 		opacity: 0;
 
-		&::after { background: linear-gradient(to right, $white, $green-primary) }
+		&::after { background: $pink-primary }
 	}
 	.skills-container {
 		@include flex(row, space-around, center);

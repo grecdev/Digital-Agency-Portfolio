@@ -1,0 +1,29 @@
+#projects {
+
+	.projects-container { max-width: 1400px }
+	
+	.project-box {
+		@include flex(row, center, center);
+		margin: 1rem 0;
+		height: 350px;
+
+		.project-description {
+			background: $gray-primary;
+			@include flex(column, center, flex-start);
+			padding: 0 3rem;
+		
+			h4 { @include font(1.5rem, inherit, bold) }
+		}
+
+		.project-description, .project-image {
+			width: 45%;
+			height: 100%;
+			margin: 1rem .5rem;
+		}
+	}
+
+	.project-box:nth-child(1) .project-image { background: url('../imgs/presentation-website.jpg') no-repeat center/cover}
+	.project-box:nth-child(2) .project-image { background: url('../imgs/ecommerce-website.jpg') no-repeat center/cover}
+	.project-box:nth-child(3) .project-image { background: url('../imgs/logo.png') no-repeat center/cover}
+	.project-box:nth-child(4) .project-image { background: url('../imgs/business-card.jpg') no-repeat center/cover}
+}

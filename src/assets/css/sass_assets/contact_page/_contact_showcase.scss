@@ -1,19 +1,7 @@
 #contact-showcase {
 	background: url('../imgs/contact-showcase.jpg') no-repeat center/cover;
-	position: relative;
 	color: $white;
 	padding: 2rem 1rem;
-
-	/** Overlay effect **/
-	&::before {
-		content: '';
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		background: rgba(0, 0, 0, .6);
-	}
 
 	.section-header::after { background: linear-gradient(to left, lighten($purple-primary, 30%), $pink-primary, $pink-primary) }
 
@@ -99,12 +87,7 @@
 			button {
 				grid-column: 1 / -1;
 				grid-row: 4;
-				background: $pink-primary;
-				padding: 1rem 0;
-				border-radius: 3px;
-				transition: background 300ms ease-in-out;
-
-				&:hover { background: lighten($pink-primary, 5%) }
+				padding: 1rem;
 			}
 		}
 	}

@@ -15,8 +15,8 @@ module.exports = merge(config, {
 			template: './src/contact.html'
 		}),
 		new HtmlWebpackPlugin({  // Also generate a index.html
-			filename: 'projects.html',
-			template: './src/projects.html'
+			filename: 'portfolio.html',
+			template: './src/portfolio.html'
 		})
 	],
 	module: {

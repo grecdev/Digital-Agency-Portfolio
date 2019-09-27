@@ -1,0 +1,12 @@
+#portfolio-showcase {
+	background: url('../imgs/portfolio-showcase.jpg') no-repeat center/cover;
+	height: 50vh;
+	color: $white;
+	
+	.container { @include flex(column, center, center) }
+
+	.section-header {
+		width: 50%;
+		&::after { background: linear-gradient(to left, lighten($purple-primary, 40%), $pink-primary) }
+	}
+}

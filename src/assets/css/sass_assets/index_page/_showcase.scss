@@ -1,8 +1,8 @@
 #showcase {
 	width: 100vw;
 	height: 100vh;
-	background: #00e06d;
-	background: linear-gradient(9deg, #00e06d -10%, #411b5d 45%);
+	background: $pink-primary;
+	background: linear-gradient(9deg, $pink-primary -10%, #411b5d 45%);
 	color: #fff;
 	position: relative;
 	

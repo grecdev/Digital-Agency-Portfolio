@@ -1,6 +1,6 @@
 #partners {
 	padding: 2rem;
-	background: $white;
+	background: rgba(0, 0, 0, .1);
 
 	.partners-container { @include flex(row, center, center) }
 

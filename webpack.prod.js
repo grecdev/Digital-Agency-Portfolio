@@ -39,8 +39,8 @@ module.exports = merge(config, {
 				}
 			}),
 			new HtmlWebpackPlugin({
-				filename: 'projects.html',
-				template: './src/projects.html',
+				filename: 'portfolio.html',
+				template: './src/portfolio.html',
 				minify: {
 					removeAttributeQuotes: true,
 					collapseWhitespace: true,
