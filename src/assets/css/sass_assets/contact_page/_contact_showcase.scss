@@ -1,0 +1,148 @@
+#contact-showcase {
+	background: url('../imgs/contact-showcase.jpg') no-repeat center/cover;
+	position: relative;
+	color: $white;
+	padding: 2rem 1rem;
+
+	/** Overlay effect **/
+	&::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: rgba(0, 0, 0, .6);
+	}
+
+	.section-header::after { background: linear-gradient(to left, lighten($purple-primary, 30%), $pink-primary, $pink-primary) }
+
+	.contact-container {
+		position: relative;
+		z-index: 1;
+		@include flex(row, space-between, flex-start);
+		margin-top: 4rem;
+
+		.contact-box:first-child {
+			width: 45%;
+			height: 420px;
+			position: relative;
+		}
+
+		.contact-box { margin: 0 1rem }
+	}
+
+	.contact-box:nth-child(2) {
+		width: 50%;
+
+		form {
+			@include grid(repeat(2, 1fr), 1rem);
+
+			.form-box {
+				position: relative;
+				height: 30px;
+				margin: 1rem 0;
+			}
+
+			label {
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+	
+			input, textarea {
+				@include font(1rem, inherit, 300);
+				position: absolute;
+				left: 0;
+				top: 0;
+				background: none;
+				outline: none;
+				border: 2px solid $pink-primary;
+				border-radius: 3px;
+				width: 100%;
+				height: 100%;
+				color: $white;
+				padding: 1rem .5rem;
+				transition: transform 300ms ease-in-out;
+
+				&:focus { border: 2px solid lighten($pink-primary, 15%) }
+
+				/** Animation for focusing the inputs **/
+				&:focus + label { transform: translate(0px, -27px) }
+			}
+
+			label {
+				transform: translate(10.6px, 5px);
+				transition: transform 300ms ease-in-out;
+				background: transparent;
+				z-index: 50;
+				cursor: auto
+			}
+
+			.form-box:nth-child(5) {
+				height: 130px;
+				grid-column: 1 / -1;
+
+				label { transform: translate(10px, 9px) }
+
+				textarea {
+					width: 100%;
+					font-weight: inherit;
+					font-family: inherit;
+					padding: .5rem;
+
+					/** Animation for focusing the inputs **/
+					&:focus + label { transform: translate(0px, -27px) }
+				}
+			}
+
+			button {
+				grid-column: 1 / -1;
+				grid-row: 4;
+				background: $pink-primary;
+				padding: 1rem 0;
+				border-radius: 3px;
+				transition: background 300ms ease-in-out;
+
+				&:hover { background: lighten($pink-primary, 5%) }
+			}
+		}
+	}
+}
+
+/** Contact page animation **/
+.envelope-animation {
+	animation: envelope-animation 1.2s ease-in-out forwards 250ms;
+	opacity: 0;
+	transform: translate(-110px, 60px);
+}
+
+@keyframes envelope-animation {
+	from {
+		opacity: 0;
+		transform: translate(-110px, 60px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translate(0);
+	}
+}
+
+.form-intro {
+	animation: form-animation 1.2s ease-in-out forwards 1s;
+	opacity: 0;
+	transform: translateX(350px);
+}
+
+@keyframes form-animation {
+	from {
+		opacity: 0;
+		transform: translateX(350px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translate(0);
+	}
+}

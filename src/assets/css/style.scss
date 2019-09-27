@@ -10,14 +10,18 @@
 @import './sass_assets/global_layout/header';
 @import './sass_assets/global_layout/footer';
 
+// INDEX PAGE
 // Showcase
-@import './sass_assets/showcase/showcase';
+@import './sass_assets/index_page/showcase';
 
 // About Us
-@import './sass_assets/skills/skills';
+@import './sass_assets/index_page/skills';
 
 // Offer
-@import './sass_assets/steps/steps';
+@import './sass_assets/index_page/steps';
 
 // Partners
-@import './sass_assets/partners/partners';
+@import './sass_assets/index_page/partners';
+
+// CONTACT PAGE
+@import './sass_assets/contact_page/contact_showcase';

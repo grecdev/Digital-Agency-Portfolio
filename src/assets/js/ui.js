@@ -73,7 +73,7 @@ class Ui {
 		const pos = window.pageYOffset;
 
 		// Enable header fixed on desktop devices and home page
-		if(window.matchMedia('(min-width: 1025px)').matches && location.pathname.includes('index') || location.pathname.includes('/')) {
+		if(window.matchMedia('(min-width: 1025px)').matches && location.pathname.includes('index') && location.pathname.includes('/')) {
 
 			// Disable it when header modal menu is visible
 			if(pos > 50 && !ui.header_modal.classList.contains('visible-flex')) ui.header.classList.add('header-fixed')
