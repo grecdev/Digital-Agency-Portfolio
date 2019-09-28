@@ -1,0 +1,93 @@
+#testimonials {
+	background: $gray-primary;
+	padding-bottom: 3rem;
+
+	.testimonials-container {
+		@include flex(row, center, center);
+		margin-top: 8.5rem;
+		overflow: hidden;
+		height: 400px;
+		position: relative;
+
+		.testimonial-box {
+			@include flex(column, center, center);
+			text-align: center;
+			background: $white;
+			padding: 2rem .5rem 0;
+			width: 30%;
+			height: 250px;
+			position: absolute;
+			transition: transform 500ms ease-in-out;
+			
+			.testimonial-image {
+				width: 100px;
+				height: 100px;
+				border-radius: 50%;
+				position: absolute;
+				top: -55px;
+				border: 3px solid $white;
+			}
+
+			h5 {
+				@include font(1.3rem, $pink-primary, bold);
+				margin-bottom: 0.5rem;
+			}
+
+			p span { margin-right: .5rem }
+
+			.review-box {
+				color: #FFC300;
+				position: absolute;
+				bottom: 25px;
+			}
+
+			/** Added the images with background property because it makes the img shrinks **/
+			&:nth-child(1) .testimonial-image { background: url('../imgs/jeff-testimonial.jpg') no-repeat center/cover }
+			&:nth-child(2) .testimonial-image { background: url('../imgs/bill-testimonial.jpg') no-repeat center/cover }
+			&:nth-child(3) .testimonial-image { background: url('../imgs/mark-testimonial.jpg') no-repeat center/cover }
+			&:nth-child(4) .testimonial-image { background: url('../imgs/jeff-testimonial.jpg') no-repeat center/cover }
+			&:nth-child(5) .testimonial-image { background: url('../imgs/ortega-testimonial.jpg') no-repeat center/cover }
+		}
+	}
+}
+
+/** Slider Buttons **/
+.slider-buttons {
+	font-size: 2rem;
+	position: absolute;
+	bottom: 0;
+	@include flex(row, space-around, center);
+	color: $pink-primary;
+	width: 10%;
+		
+	div {
+		transition: all 200ms ease-in-out;
+		cursor: pointer;
+		width: 40px;
+		text-align: center;
+	}
+
+	div:hover { color: lighten($pink-primary, 15%) }
+
+	#left-arrow:hover { animation: left-arrow 800ms ease-in-out alternate infinite }
+	#right-arrow:hover { animation: right-arrow 800ms ease-in-out alternate infinite }
+}
+
+@keyframes left-arrow {
+	from { transform: translateX(0) }
+
+	to { transform: translateX(-5px) }
+}
+
+@keyframes right-arrow {
+	from { transform: translateX(0) }
+
+	to { transform: translateX(5px) }
+}
+
+/*** Testimonial Slider Animation ***/
+.outer-left { transform: translateX(-740px) }
+.left {transform: translateX(-370px) }
+.mid { transform: translateX(0) }
+.right { transform: translateX(370px) }
+.outer-right { transform: translateX(740px) }

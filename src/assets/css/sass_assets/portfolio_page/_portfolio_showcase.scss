@@ -5,8 +5,5 @@
 	
 	.container { @include flex(column, center, center) }
 
-	.section-header {
-		width: 50%;
-		&::after { background: linear-gradient(to left, lighten($purple-primary, 40%), $pink-primary) }
-	}
+	.section-header &::after { background: linear-gradient(to left, lighten($purple-primary, 40%), $pink-primary) }
 }

@@ -9,6 +9,8 @@ require('isomorphic-fetch');
 // Individual functionality for each file
 import { globalFunctionality } from './global.js';
 import { headerFunctionality } from './header/header.js';
+import { portfolioFunctionality } from './portfolio_page/slider.js';
 
 globalFunctionality.init();
 headerFunctionality.init();
+portfolioFunctionality.init();

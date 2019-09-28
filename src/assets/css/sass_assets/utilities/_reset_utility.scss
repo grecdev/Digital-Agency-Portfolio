@@ -111,9 +111,10 @@ svg {
 .mb-xm { margin-bottom: 1.35rem }
 .mb-md { margin-bottom: 1.5em }
 
-/** Show menus **/
+/** Show / Hide menus **/
 .visible-block { display: block !important }
 .visible-flex { display: flex !important }
+.hidden { display: none !important }
 
 /** Sections **/
 /* Section Header */
@@ -121,7 +122,6 @@ svg {
 	@include flex(column, center, center);
 	position: relative;
 	z-index: 1;
-	width: 35%;
 	margin: 0 auto 2rem;
 	padding-bottom: .5rem;
 
