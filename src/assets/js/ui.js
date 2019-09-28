@@ -86,84 +86,67 @@ class Ui {
 		window.requestAnimationFrame(ui.scrollFunctionality);
 	}
 
-	sliderNavigation(e, index) {
-
-		// The index position
-		const nextIndex = index();
-
-		// Remove the classes after, because we have set it initially in the html file
-		this.testimonial_box.forEach(box => box.classList.remove('outer-left', 'left', 'mid', 'right', 'outer-right'));
+	sliderNavigation(e) {
 
 		if(e.currentTarget === ui.left_arrow) {
 
-			// Position order for each testimonial
-			const positions = {
-				outer_left: ['outer-right', 'right', 'mid', 'left', 'outer-left'],
-				left: ['outer-left', 'outer-right', 'right', 'mid', 'left'],
-				mid: ['left', 'outer-left', 'outer-right', 'right', 'mid'],
-				right: ['mid', 'left', 'outer-left', 'outer-right', 'right'],
-				outer_right: ['right', 'mid', 'left', 'outer-left', 'outer-right']
-			}
+			this.testimonial_box.forEach(box => {
 
-			// Add the class acording to the incremented index
-			this.testimonial_box[0].classList.add(positions.outer_left[nextIndex]);
-			this.testimonial_box[1].classList.add(positions.left[nextIndex]);
-			this.testimonial_box[2].classList.add(positions.mid[nextIndex]);
-			this.testimonial_box[3].classList.add(positions.right[nextIndex]);
-			this.testimonial_box[4].classList.add(positions.outer_right[nextIndex]);
+				// Get initial position
+				const startingPos = Math.round(box.getBoundingClientRect().x);
 
-			// this.testimonial_box.forEach(box => {
-			// 	// When the box is in the outer left position
-			// 	if(box.classList.contains('outer-left')) {
+				// The position that will be changed
+				const nextPosition = startingPos - 959;
+				
+				box.style.transform = `translateX(${nextPosition}px)`;
+	
+				// Get the translateX value
+				const translateX = box.style.transform;
 
-			// 		box.classList.replace('outer-left', 'outer-right')
-					
-			// 		setTimeout(() => {
-			// 			// Replace the position
-			// 			// Hide the box when it moves
-			// 			// box.classList.add('hidden');
+				// Get what is between transform style parantheses
+				const parantheses = translateX.replace(/[^\d]/g, '');
 
-			// 			// setTimeout(() => box.classList.replace('outer-left', 'outer-right'), 100);
+				if(parantheses > 740) {
+					// Move the box to the outer left side of the slider
+					box.style.transform = `translateX(740px)`;
 
-			// 			// When the box is in the outer position show it, so it can be visible when is in the testimonial container
-			// 			// setTimeout(() => box.classList.remove('hidden'), 500);
-			// 		}, 500);
+					// Hide the box when is moving to the outside position
+					box.classList.add('hidden');
 
-			// 	}
-			// });
+					// Make the box visible after the moving transition ends
+					setTimeout(() => box.classList.remove('hidden'), 500);
+				}
+			});
 		}
 		else if(e.currentTarget === ui.right_arrow) {
 
-			// Position order for each testimonial
-			const positions = {
-				outer_right: ['outer-left', 'left', 'mid', 'right', 'outer-right'],
-				right: ['outer-right', 'outer-left', 'left', 'mid', 'right'],
-				mid: ['right', 'outer-right', 'outer-left', 'left', 'mid'],
-				left: ['mid', 'right', 'outer-right', 'outer-left', 'left'],
-				outer_left: ['left', 'mid', 'right', 'outer-right', 'outer-left'],
-			}
+			this.testimonial_box.forEach(box => {
 
-			// Add the class acording to the incremented index
-			this.testimonial_box[4].classList.add(positions.outer_right[nextIndex]);
-			this.testimonial_box[3].classList.add(positions.right[nextIndex]);
-			this.testimonial_box[2].classList.add(positions.mid[nextIndex]);
-			this.testimonial_box[1].classList.add(positions.left[nextIndex]);
-			this.testimonial_box[0].classList.add(positions.outer_left[nextIndex]);
+				// Get initial position
+				const startingPos = Math.round(box.getBoundingClientRect().x);
 
-			// this.testimonial_box.forEach(box => {
-			// 	// When the box is in the outer left position
-			// 	if(box.classList.contains('outer-right')) {
-			// 		setTimeout(() => {
-			// 			// Replace the position
-			// 			// Hide the box when it moves
-			// 			box.classList.add('hidden');
-			// 			setTimeout(() => box.classList.replace('outer-right', 'outer-left'), 100);
+				// The position that will be changed
+				const nextPosition = startingPos - 219;
 
-			// 			// When the box is in the outer position show it, so it can be visible when is in the testimonial container
-			// 			setTimeout(() => box.classList.remove('hidden'), 500);
-			// 		}, 500);
-			// 	}
-			// });
+				box.style.transform = `translateX(${nextPosition}px)`;
+	
+				// Get the translateX value
+				const translateX = box.style.transform;
+
+				// Get what is between transform style parantheses
+				const parantheses = translateX.replace(/[^\d]/g, '');
+
+				if(parantheses > 740) {
+					// Move the box to the outer left side of the slider
+					box.style.transform = `translateX(-740px)`;
+
+					// Hide the box when is moving to the outside position
+					box.classList.add('hidden');
+
+					// Make the box visible after the moving transition ends
+					setTimeout(() => box.classList.remove('hidden'), 500);
+				}
+			});
 		}
 	}
 
