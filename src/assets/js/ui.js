@@ -88,7 +88,7 @@ class Ui {
 
 	sliderNavigation(e) {
 
-		if(e.currentTarget === ui.left_arrow) {
+		if(e.currentTarget === ui.left_arrow && e.currentTarget.dataset.enable === 'true') {
 
 			this.testimonial_box.forEach(box => {
 
@@ -98,8 +98,9 @@ class Ui {
 				// The position that will be changed
 				const nextPosition = startingPos - 959;
 				
-				box.style.transform = `translateX(${nextPosition}px)`;
-	
+				// Apply the styles
+				box.style.transform = `translateX(${nextPosition}px)`
+
 				// Get the translateX value
 				const translateX = box.style.transform;
 
@@ -117,8 +118,13 @@ class Ui {
 					setTimeout(() => box.classList.remove('hidden'), 500);
 				}
 			});
+
+			// Button state so the animation won't trigger on multiple clicks ( comment out so you can see better )
+			this.left_arrow.setAttribute('data-enable', 'false');
+			setTimeout(() => this.left_arrow.setAttribute('data-enable', 'true'), 500);
+
 		}
-		else if(e.currentTarget === ui.right_arrow) {
+		else if(e.currentTarget === ui.right_arrow && e.currentTarget.dataset.enable === 'true') {
 
 			this.testimonial_box.forEach(box => {
 
@@ -128,6 +134,7 @@ class Ui {
 				// The position that will be changed
 				const nextPosition = startingPos - 219;
 
+				// Apply the styles
 				box.style.transform = `translateX(${nextPosition}px)`;
 	
 				// Get the translateX value
@@ -147,6 +154,10 @@ class Ui {
 					setTimeout(() => box.classList.remove('hidden'), 500);
 				}
 			});
+
+			// Button state so the animation won't trigger on multiple clicks ( comment out so you can see better )
+			this.right_arrow.setAttribute('data-enable', 'false');
+			setTimeout(() => this.right_arrow.setAttribute('data-enable', 'true'), 500);
 		}
 	}
 
