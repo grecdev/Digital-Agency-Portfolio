@@ -4,7 +4,7 @@
 
 	.testimonials-container {
 		@include flex(row, center, center);
-		margin-top: 8.5rem;
+		margin-top: 5rem;
 		overflow: hidden;
 		height: 400px;
 		position: relative;
@@ -42,7 +42,7 @@
 			}
 
 			/** Added the images with background property because it makes the img shrinks **/
-			&:nth-child(1) .testimonial-image { background: url('../imgs/jeff-testimonial.jpg') no-repeat center/cover }
+			&:nth-child(1) .testimonial-image { background: url('../imgs/steve-testimonial.jpg') no-repeat center/cover }
 			&:nth-child(2) .testimonial-image { background: url('../imgs/bill-testimonial.jpg') no-repeat center/cover }
 			&:nth-child(3) .testimonial-image { background: url('../imgs/mark-testimonial.jpg') no-repeat center/cover }
 			&:nth-child(4) .testimonial-image { background: url('../imgs/jeff-testimonial.jpg') no-repeat center/cover }

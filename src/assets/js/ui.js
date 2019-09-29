@@ -143,21 +143,41 @@ class Ui {
 				// Get what is between transform style parantheses
 				const parantheses = translateX.replace(/[^\d]/g, '');
 
+				// For the left inner box
 				if(parantheses > 740) {
-					// Move the box to the outer left side of the slider
-					box.style.transform = `translateX(-740px)`;
 
-					// Hide the box when is moving to the outside position
-					box.classList.add('hidden');
+					setTimeout(() => {
+						// Move the box to the outer left side of the slider
+						box.style.transform = `translateX(-740px)`;
+
+						// Hide the box when is moving to the outside position
+						box.classList.add('hidden');
+					}, 500);
 
 					// Make the box visible after the moving transition ends
-					setTimeout(() => box.classList.remove('hidden'), 500);
+					setTimeout(() => box.classList.remove('hidden'), 1000);
+
 				}
+				
+				// if(parantheses > 740) {
+
+				// 	setTimeout(() => {
+				// 		// Move the box to the outer left side of the slider
+				// 		box.style.transform = `translateX(-1110px)`;
+
+				// 		// Hide the box when is moving to the outside position
+				// 		box.classList.add('hidden');
+				// 	}, 500);
+
+				// 	// Make the box visible after the moving transition ends
+				// 	setTimeout(() => box.classList.remove('hidden'), 1000);
+
+				// }
 			});
 
 			// Button state so the animation won't trigger on multiple clicks ( comment out so you can see better )
 			this.right_arrow.setAttribute('data-enable', 'false');
-			setTimeout(() => this.right_arrow.setAttribute('data-enable', 'true'), 500);
+			setTimeout(() => this.right_arrow.setAttribute('data-enable', 'true'), 1000);
 		}
 	}
 
