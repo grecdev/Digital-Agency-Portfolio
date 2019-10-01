@@ -14,6 +14,14 @@ export const globalFunctionality = (() => {
 			e.stopPropagation();
 		});
 
+		document.addEventListener('DOMContentLoaded', (e) => {
+
+			ui.sliderNavigation(e);
+
+			e.stopPropagation();
+
+		});
+
 	}
 
 	return {

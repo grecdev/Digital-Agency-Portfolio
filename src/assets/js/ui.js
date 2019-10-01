@@ -88,96 +88,86 @@ class Ui {
 
 	sliderNavigation(e) {
 
+		// getPropertyValue doesn't return both margins even if i set getPropertyValue('margin')
+		const boxMargin = window.getComputedStyle(this.testimonial_box[0]).getPropertyValue('margin-left').replace(/[^\d]/g, '') * 2;
+
+		// Total width with both margins
+		const boxWidh = Math.floor(this.testimonial_box[0].getBoundingClientRect().width) + boxMargin;
+
+		// Always get the first / last element in the container ( if the user wants to add more boxes or whatever )
+		const outerLeft = Math.floor(this.testimonial_box[0].getBoundingClientRect().left);
+		const outerRight = Math.floor(this.testimonial_box[this.testimonial_box.length - 2].getBoundingClientRect().left);
+
+		// Reset position ( move the box left / right outer acording to how manny boxes are available)
+		const resetPosition = (this.testimonial_box.length - 1) * boxWidh;
+
+		if(e.type === 'DOMContentLoaded') {
+
+			this.testimonial_box.forEach(box => {
+
+				box.style.transform = `translateX(0px)`;
+
+			});
+
+		}
+
+		// Left arrow
 		if(e.currentTarget === ui.left_arrow && e.currentTarget.dataset.enable === 'true') {
 
 			this.testimonial_box.forEach(box => {
 
-				// Get initial position
-				const startingPos = Math.round(box.getBoundingClientRect().x);
-
-				// The position that will be changed
-				const nextPosition = startingPos - 959;
+				// Get the translate value ( positive and negative number )
+				const currentPosition = parseInt(box.style.transform.replace(/[^-\d]/g, ''));
 				
-				// Apply the styles
-				box.style.transform = `translateX(${nextPosition}px)`
+				// Position that will be changed
+				let nextPosition = currentPosition + boxWidh;
 
-				// Get the translateX value
-				const translateX = box.style.transform;
+				// Apply the translate value
+				box.style.transform = `translateX(${nextPosition}px)`;
 
-				// Get what is between transform style parantheses
-				const parantheses = translateX.replace(/[^\d]/g, '');
+				// Check the current outer left position
+				const currentOuterRight = Math.floor(box.getBoundingClientRect().left);
 
-				if(parantheses > 740) {
-					// Move the box to the outer left side of the slider
-					box.style.transform = `translateX(740px)`;
+				// If the current box position is higher than the last item
+				if(currentOuterRight > outerRight) {
 
-					// Hide the box when is moving to the outside position
-					box.classList.add('hidden');
+					// Reset the translate value
+					box.style.transform = `translateX(-${resetPosition}px)`;
 
-					// Make the box visible after the moving transition ends
-					setTimeout(() => box.classList.remove('hidden'), 500);
+					box.style.backgroundColor = 'red';
+
+					console.log(box);
+
 				}
+
+				
+				
 			});
 
 			// Button state so the animation won't trigger on multiple clicks ( comment out so you can see better )
 			this.left_arrow.setAttribute('data-enable', 'false');
-			setTimeout(() => this.left_arrow.setAttribute('data-enable', 'true'), 500);
+			setTimeout(() => this.left_arrow.setAttribute('data-enable', 'true'), 800);
 
 		}
+		// Right Arrow
 		else if(e.currentTarget === ui.right_arrow && e.currentTarget.dataset.enable === 'true') {
 
 			this.testimonial_box.forEach(box => {
 
-				// Get initial position
-				const startingPos = Math.round(box.getBoundingClientRect().x);
-
-				// The position that will be changed
-				const nextPosition = startingPos - 219;
-
-				// Apply the styles
-				box.style.transform = `translateX(${nextPosition}px)`;
-	
-				// Get the translateX value
-				const translateX = box.style.transform;
-
-				// Get what is between transform style parantheses
-				const parantheses = translateX.replace(/[^\d]/g, '');
-
-				// For the left inner box
-				if(parantheses > 740) {
-
-					setTimeout(() => {
-						// Move the box to the outer left side of the slider
-						box.style.transform = `translateX(-740px)`;
-
-						// Hide the box when is moving to the outside position
-						box.classList.add('hidden');
-					}, 500);
-
-					// Make the box visible after the moving transition ends
-					setTimeout(() => box.classList.remove('hidden'), 1000);
-
-				}
+				// Get the translate value ( positive and negative number )
+				const currentPos = parseInt(box.style.transform.replace(/[^-\d]/g, ''));
 				
-				// if(parantheses > 740) {
+				// Position that will be changed
+				let total = currentPos - boxWidh;
 
-				// 	setTimeout(() => {
-				// 		// Move the box to the outer left side of the slider
-				// 		box.style.transform = `translateX(-1110px)`;
-
-				// 		// Hide the box when is moving to the outside position
-				// 		box.classList.add('hidden');
-				// 	}, 500);
-
-				// 	// Make the box visible after the moving transition ends
-				// 	setTimeout(() => box.classList.remove('hidden'), 1000);
-
-				// }
+				// Apply the translate value
+				box.style.transform = `translateX(${total}px)`;
+				
 			});
 
 			// Button state so the animation won't trigger on multiple clicks ( comment out so you can see better )
 			this.right_arrow.setAttribute('data-enable', 'false');
-			setTimeout(() => this.right_arrow.setAttribute('data-enable', 'true'), 1000);
+			setTimeout(() => this.right_arrow.setAttribute('data-enable', 'true'), 800);
 		}
 	}
 
