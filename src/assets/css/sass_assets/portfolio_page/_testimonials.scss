@@ -2,10 +2,11 @@
 	background: $gray-primary;
 	padding-bottom: 3rem;
 
+	/** Enable here if you want to see how the boxes moves **/
 	* { overflow: visible !important }
 
 	.testimonials-container {
-		@include flex(row, center, center);
+		@include flex(row, flex-start, center);
 		overflow: hidden;
 		height: 400px;
 		position: relative;
@@ -18,7 +19,7 @@
 			width: 30%;
 			height: 250px;
 			margin: 0 1rem;
-			position: relative;
+			position: absolute;
 			flex-shrink: 0;
 			transition: transform 500ms ease-in-out;
 			
@@ -89,3 +90,5 @@
 
 	to { transform: translateX(5px) }
 }
+
+.muie { visibility: hidden }

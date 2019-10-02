@@ -15,7 +15,7 @@ class Ui {
 		// Menus / Sections
 		this.showcase = document.querySelector('#showcase');
 		this.header_modal = document.getElementById('desktop-modal-menu');
-		this.testimonial_container = document.querySelectorAll('.testimonial-container');
+		this.testimonial_container = document.querySelector('.testimonials-container');
 		// Buttons
 		this.header_icon = document.getElementById('modal-menu-icon');
 		this.left_arrow = document.getElementById('left-arrow');
@@ -92,83 +92,108 @@ class Ui {
 		const boxMargin = window.getComputedStyle(this.testimonial_box[0]).getPropertyValue('margin-left').replace(/[^\d]/g, '') * 2;
 
 		// Total width with both margins
-		const boxWidh = Math.floor(this.testimonial_box[0].getBoundingClientRect().width) + boxMargin;
+		const boxWidth = Math.floor(this.testimonial_box[0].getBoundingClientRect().width) + boxMargin;
 
-		// Always get the first / last element in the container ( if the user wants to add more boxes or whatever )
-		const outerLeft = Math.floor(this.testimonial_box[0].getBoundingClientRect().left);
-		const outerRight = Math.floor(this.testimonial_box[this.testimonial_box.length - 2].getBoundingClientRect().left);
-
-		// Reset position ( move the box left / right outer acording to how manny boxes are available)
-		const resetPosition = (this.testimonial_box.length - 1) * boxWidh;
+		// Container width ( for outer boxes )
+		const containerWidth = this.testimonial_container.getBoundingClientRect().width;
 
 		if(e.type === 'DOMContentLoaded') {
+			this.testimonial_box.forEach((box, index) => {
 
-			this.testimonial_box.forEach(box => {
+				// Set the initial position
+				// Decrement with boxWidth so we can show only 3 clients ( can be changed of course )
+				const startingPosition = (boxWidth * index) - boxWidth;
 
-				box.style.transform = `translateX(0px)`;
+				box.style.transform = `translateX(${startingPosition}px)`;
 
 			});
-
 		}
 
-		// Left arrow
-		if(e.currentTarget === ui.left_arrow && e.currentTarget.dataset.enable === 'true') {
+		if(e.type === 'click') {
+			// Left arrow
+			if(e.currentTarget === ui.left_arrow && e.currentTarget.dataset.enable === 'true') {
+	
+				this.testimonial_box.forEach((box, index) => {
+	
+					// Get the translate value ( positive and negative number )
+					const currentPosition = parseInt(box.style.transform.replace(/[^-\d]/g, ''));
+					
+					// Position that will be changed
+					let nextPosition = currentPosition - boxWidth;
+	
+					// Apply the translate value
+					box.style.transform = `translateX(${nextPosition}px)`;
+	
+					// Check the current outer left position
+					const outerPosition = Math.round(box.getBoundingClientRect().left);
 
-			this.testimonial_box.forEach(box => {
+					const resetPosition = -currentPosition * 3;
+			
+					// If the outer left box position is out of the container
+					if(outerPosition < 0) {
+	
+						// Reset the translate value
+						box.style.transform = `translateX(${resetPosition}px)`;
+	
+						box.style.backgroundColor = 'red';
+	
+						// Hide the box when we reset it	
+						// box.classList.add('muie');
+	
+						// Show the class so we can see it when the testimonial moves
+						// setTimeout(() => box.classList.remove('muie'), 550);
+					}
+	
+				});
+	
+				// Button state so the animation won't trigger on multiple clicks ( comment out so you can see better )
+				this.left_arrow.setAttribute('data-enable', 'false');
+				setTimeout(() => this.left_arrow.setAttribute('data-enable', 'true'), 700);
+	
+			}
+			// Right Arrow
+			else if(e.currentTarget === ui.right_arrow && e.currentTarget.dataset.enable === 'true') {
+	
+				this.testimonial_box.forEach((box, index) => {
+	
+					// Get the translate value ( positive and negative number )
+					const currentPosition = parseInt(box.style.transform.replace(/[^-\d]/g, ''));
+					
+					// Position that will be changed
+					let nextPosition = currentPosition + boxWidth;
+	
+					// Apply the translate value
+					box.style.transform = `translateX(${nextPosition}px)`;
+	
+					// Check the current outer left position
+					const outerPosition = Math.round(box.getBoundingClientRect().left);
 
-				// Get the translate value ( positive and negative number )
-				const currentPosition = parseInt(box.style.transform.replace(/[^-\d]/g, ''));
-				
-				// Position that will be changed
-				let nextPosition = currentPosition + boxWidh;
+					const resetPosition = -boxWidth;
+			
+					// If the outer left box position is out of the container
+					if(outerPosition > containerWidth) {
+	
+						// Reset the translate value
+						box.style.transform = `translateX(${resetPosition}px)`;
 
-				// Apply the translate value
-				box.style.transform = `translateX(${nextPosition}px)`;
-
-				// Check the current outer left position
-				const currentOuterRight = Math.floor(box.getBoundingClientRect().left);
-
-				// If the current box position is higher than the last item
-				if(currentOuterRight > outerRight) {
-
-					// Reset the translate value
-					box.style.transform = `translateX(-${resetPosition}px)`;
-
-					box.style.backgroundColor = 'red';
-
-					console.log(box);
-
-				}
-
-				
-				
-			});
-
-			// Button state so the animation won't trigger on multiple clicks ( comment out so you can see better )
-			this.left_arrow.setAttribute('data-enable', 'false');
-			setTimeout(() => this.left_arrow.setAttribute('data-enable', 'true'), 800);
-
+						box.style.backgroundColor = 'blue';
+	
+						// // Hide the box when we reset it	
+						// box.classList.add('muie');
+	
+						// // Show the class so we can see it when the testimonial moves
+						// setTimeout(() => box.classList.remove('muie'), 550);
+					}
+	
+				});
+	
+				// Button state so the animation won't trigger on multiple clicks ( comment out so you can see better )
+				this.right_arrow.setAttribute('data-enable', 'false');
+				setTimeout(() => this.right_arrow.setAttribute('data-enable', 'true'), 700);
+			}
 		}
-		// Right Arrow
-		else if(e.currentTarget === ui.right_arrow && e.currentTarget.dataset.enable === 'true') {
 
-			this.testimonial_box.forEach(box => {
-
-				// Get the translate value ( positive and negative number )
-				const currentPos = parseInt(box.style.transform.replace(/[^-\d]/g, ''));
-				
-				// Position that will be changed
-				let total = currentPos - boxWidh;
-
-				// Apply the translate value
-				box.style.transform = `translateX(${total}px)`;
-				
-			});
-
-			// Button state so the animation won't trigger on multiple clicks ( comment out so you can see better )
-			this.right_arrow.setAttribute('data-enable', 'false');
-			setTimeout(() => this.right_arrow.setAttribute('data-enable', 'true'), 800);
-		}
+		
 	}
 
 }
