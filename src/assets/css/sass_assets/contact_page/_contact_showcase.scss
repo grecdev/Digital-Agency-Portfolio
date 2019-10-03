@@ -2,6 +2,8 @@
 	background: url('../imgs/contact-showcase.jpg') no-repeat center/cover;
 	color: $white;
 	padding: 2rem 1rem;
+	// height: 100vh;
+	width: 100%;
 
 	.section-header::after { background: linear-gradient(to left, lighten($purple-primary, 30%), $pink-primary, $pink-primary) }
 

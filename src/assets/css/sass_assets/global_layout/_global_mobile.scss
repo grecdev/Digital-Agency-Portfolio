@@ -1,0 +1,255 @@
+/* 
+  ##Device = Laptops, Desktops
+  ##Screen = B/w 1025px to 1280px
+*/
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+
+	#desktop-modal-menu .modal-link { font-size: 1.4rem }
+	
+}
+
+/* 
+  ##Device = Tablets, Ipads (portrait)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  
+  /** Footer header **/
+	footer .footer-header .footer-header-container { width: 50% }
+
+	#desktop-modal-menu .modal-link { width: 30% }
+
+	/*** Header ***/
+	header {
+		background: darken($purple-primary, 5%);
+		padding: .5rem 1.5rem;
+
+		.logo { font-size: 1.5rem }
+
+		#modal-menu-icon {
+			width: 40px;
+			height: 40px;
+			
+			.modal-bar {
+				width: 10px;
+				transform: rotate(45deg) translate(-6px, -5.5px);
+				transition: translate 0s;
+
+				&:before { transform: rotate(90deg) translate(4px, -6px) }
+
+				&:after { transform: rotate(0) translate(10px, 10px) }
+			}
+		}
+	}
+  
+}
+
+/* 
+  ##Device = Tablets, Ipads (landscape)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  
+  /** Footer header **/
+	footer .footer-header .footer-header-container { width: 50% }
+  
+}
+
+/* 
+  ##Device = Low Resolution Tablets, Mobiles (Landscape)
+  ##Screen = B/w 481px to 767px
+*/
+
+@media (min-width: 481px) and (max-width: 767px) {
+	
+	.header-padding-reset { padding-top: 3rem }
+
+	#desktop-modal-menu .modal-link {
+		font-size: 1.2rem;
+		width: 35%;
+	}
+
+	.section-header h2 { font-size: 1.7rem }
+
+	.container { padding: 1.5rem }
+
+	.header-fixed .logo { font-size: 1rem }
+
+	body { padding-bottom: 9rem }
+	
+	/*** Header ***/
+	header {
+		background: darken($purple-primary, 5%);
+		padding: .5rem 1.5rem;
+
+		.logo { font-size: 1rem }
+
+		#modal-menu-icon {
+			width: 40px;
+			height: 40px;
+			
+			.modal-bar {
+				width: 10px;
+				transform: rotate(45deg) translate(-6px, -5.5px);
+				transition: translate 0s;
+
+				&:before { transform: rotate(90deg) translate(4px, -6px) }
+
+				&:after { transform: rotate(0) translate(10px, 10px) }
+			}
+		}
+	}
+
+	/*** Footer ***/
+	.footer-padding-reset { padding-bottom: 17rem }
+	
+	/** Footer header **/
+	footer .footer-header .footer-header-container {
+		width: 50%;
+
+		h3 { font-size: 1.5rem }
+
+		p { font-size: 1rem }
+
+		span i { font-size: 2.5rem }
+	}
+	
+	footer .footer-content { font-size: .8rem }  
+
+}
+
+/* 
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+*/
+
+@media (min-width: 320px) and (max-width: 480px) {
+	
+	/** Global spacing / size **/
+	#desktop-modal-menu .modal-link {
+		width: 50%;
+		font-size: 1.2rem;
+	}
+
+	.header-padding-reset { padding-top: 3rem }
+
+	.section-header h2 { font-size: 1.3rem }
+
+	.container { padding: 1.5rem }
+
+	.header-fixed .logo { font-size: 1rem }
+
+	body { padding-bottom: 14.5rem }
+	
+	/*** Header ***/
+	header {
+		background: darken($purple-primary, 5%);
+		padding: .5rem 1.5rem;
+
+		.logo { font-size: 1rem }
+
+		#modal-menu-icon {
+			width: 40px;
+			height: 40px;
+			
+			.modal-bar {
+				width: 10px;
+				transform: rotate(45deg) translate(-6px, -5.5px);
+				transition: translate 0s;
+
+				&:before { transform: rotate(90deg) translate(4px, -6px) }
+
+				&:after { transform: rotate(0) translate(10px, 10px) }
+			}
+		}
+	}
+
+	/*** Footer ***/
+	.footer-padding-reset { padding-bottom: 22rem }
+	
+	/** Footer header **/
+	footer .footer-header .footer-header-container {
+		width: 100%;
+
+		h3 { font-size: 1.5rem }
+
+		p { font-size: 1rem; }
+
+		span i { font-size: 2.5rem }
+	}
+	
+	footer .footer-content {
+		font-size: .8rem;
+		@include flex(column, center, center);
+
+		.footer-box { margin: .5rem 0 }
+	}
+
+	footer .footer-content .footer-box:first-child p { font-size: .85rem }
+  
+}
+
+/*** Ihone SE ***/
+@media screen and (max-width: 320px) {
+	.footer-padding-reset {
+    padding-bottom: 25rem;
+	}
+}
+
+/** Iphone X / Pixel 2 XL ( Landscape ) **/
+@media screen and (min-width: 812px) and (max-width: 832px) {
+
+	.header-padding-reset { padding-top: 3rem }
+
+	#desktop-modal-menu .modal-link { font-size: 1.2rem }
+
+	.section-header h2 { font-size: 1.5rem }
+
+	.container { padding: 1.5rem }
+
+	.header-fixed .logo { font-size: 1rem }
+
+	body { padding-bottom: 9.3rem }
+	
+	/*** Header ***/
+	header {
+		background: darken($purple-primary, 5%);
+		padding: .5rem 1.5rem;
+
+		.logo { font-size: 1rem }
+
+		#modal-menu-icon {
+			width: 40px;
+			height: 40px;
+			
+			.modal-bar {
+				width: 10px;
+				transform: rotate(45deg) translate(-6px, -5.5px);
+				transition: translate 0s;
+
+				&:before { transform: rotate(90deg) translate(4px, -6px) }
+
+				&:after { transform: rotate(0) translate(10px, 10px) }
+			}
+		}
+	}
+
+	/*** Footer ***/
+	/** Footer header **/
+	footer .footer-header .footer-header-container {
+		width: 50%;
+
+		h3 { font-size: 1.5rem }
+
+		p { font-size: 1rem }
+
+		span i { font-size: 2.5rem }
+	}
+	
+	footer .footer-content { font-size: .8rem } 
+
+	.footer-padding-reset { padding-bottom: 17rem }
+}

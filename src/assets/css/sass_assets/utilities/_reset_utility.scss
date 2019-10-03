@@ -5,7 +5,10 @@
 	box-sizing: border-box;
 }
 
-html { height: 100% }
+html {
+	height: 100%;
+	overflow-x: hidden;
+}
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -39,7 +42,7 @@ body {
 	overflow-x: hidden;
 	position: relative;
 	min-height: 100%;
-	padding-bottom: $footer-height-desktop-xs;
+	padding-bottom: 10rem;
 }
 
 ol, ul {
@@ -93,8 +96,8 @@ svg {
 	max-width: 1200px;
 	height: 100%;
 	overflow: hidden;
-	padding: 2rem;
 	position: relative;
+	padding: 2rem 1rem;
 }
 
 /** Text **/
@@ -125,6 +128,7 @@ svg {
 	z-index: 1;
 	margin: 0 auto 2rem;
 	padding-bottom: .5rem;
+	text-align: center;
 
 	h2 { @include font(2rem, inherit, 300) }
 
@@ -140,8 +144,8 @@ svg {
 	}
 }
 
-.header-padding-reset { padding-top: $header-height-desktop }
-.footer-padding-reset { padding-bottom: $footer-height-desktop }
+.header-padding-reset { padding-top: 3.5rem }
+.footer-padding-reset { padding-bottom: 19.4rem }
 
 /** Overlay Effect **/
 .overlay-bg {

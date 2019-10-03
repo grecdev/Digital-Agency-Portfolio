@@ -1,0 +1,234 @@
+/* 
+  ##Device = Laptops, Desktops
+  ##Screen = B/w 1025px to 1280px
+*/
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+	
+	// Showcase animation
+  @keyframes left-triangle {
+		from { transform: translate(0,0) rotate(0) }
+	
+		to { transform: translate(-230px, -10px) rotate(-70deg) }
+	}
+	
+	@keyframes mid-triangle {
+		from { transform: translate(0,0) rotate(0) }
+	
+		to { transform: translate(-20px, 120px) rotate(10deg) }
+	}
+	
+	@keyframes right-triangle {
+		from { transform: translate(0,0) rotate(0) }
+	
+		to { transform: translate(160px, -90px) rotate(30deg) }
+	}
+
+	// Footer header
+	footer .footer-header .footer-header-container { width: 50% }
+}
+
+/* 
+  ##Device = Tablets, Ipads (portrait)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) {
+	
+	/*** Showcase ***/
+  #showcase .showcase-container {
+
+		.showcase-content {
+			width: 60%;
+		}
+	}
+
+	#skills  {
+
+		.section-header, .skills-container {
+			transform: none;
+			opacity: 1;
+		}
+	}
+	
+}
+
+/* 
+  ##Device = Tablets, Ipads (landscape)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  
+  //CSS
+  
+}
+
+/* 
+  ##Device = Low Resolution Tablets, Mobiles (Landscape)
+  ##Screen = B/w 481px to 767px
+*/
+
+@media (min-width: 481px) and (max-width: 767px) {
+	
+	/*** Showcase ***/
+  #showcase .showcase-container {
+
+		@include flex(column, center, center);
+		
+		.showcase-content {
+			width: 80%;
+			position: relative;
+			left: 0;
+
+			h1 {
+				font-size: 2rem;
+				line-height: 40px;
+			}
+
+			p { font-size: .95rem }
+		}
+	}
+
+	.left-intro, .mid-intro, .right-intro { animation: none }
+
+	/*** Steps Section ***/
+	#steps .steps-container {
+		@include grid(1fr, 0);
+		
+		.steps-box {
+			padding: 1rem;
+
+			&-header { font-size: 2rem }
+
+			&-description h4 { font-size: 1.2rem }
+		}
+	}
+	
+	/*** Services Section ***/
+	#skills  {
+
+		.section-header, .skills-container {
+			transform: none;
+			opacity: 1;
+		}
+
+		.skills-container {
+			@include flex(column, center, center);
+
+			.skills-box {
+				width: 100%;
+				
+				li { @include flex(row, center, center) }
+			}
+		}
+	}
+
+	/*** Partners section ***/
+	#partners .partners-container {
+		flex-wrap: wrap;
+
+		.partners-box {
+			width: 25%;
+			margin: 1rem 2rem;
+		}
+	}
+}
+
+/* 
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+*/
+
+@media (min-width: 320px) and (max-width: 480px) {
+  
+  /*** Showcase ***/
+  #showcase .showcase-container {
+
+		@include flex(column, center, center);
+		
+		.showcase-content {
+			width: 95%;
+			position: relative;
+			left: 0;
+
+			h1 {
+				font-size: 2.5rem;
+				line-height: 40px;
+			}
+
+			p { font-size: .95rem }
+		}
+	}
+
+	.showcase-animation-container { right: -145px }
+
+	.left-intro, .mid-intro, .right-intro { animation: none }
+
+	/*** Steps Section ***/
+	#steps .steps-container {
+		@include grid(1fr, 0);
+		
+		.steps-box {
+			padding: 1rem;
+
+			&-header { font-size: 2rem }
+
+			&-description h4 { font-size: 1.2rem }
+		}
+	}
+	
+	/*** Services Section ***/
+	#skills  {
+
+		.section-header, .skills-container {
+			transform: none;
+			opacity: 1;
+		}
+
+		.skills-container {
+			@include flex(column, center, center);
+
+			.skills-box {
+				width: 100%;
+				
+				li { @include flex(row, center, center) }
+			}
+		}
+	}
+
+	/*** Partners section ***/
+	#partners .partners-container {
+		flex-wrap: wrap;
+
+		.partners-box {
+			width: 25%;
+			margin: 1rem 2rem;
+		}
+	}
+}
+
+/** Iphone X / Pixel 2 XL ( Landscape ) **/
+@media screen and (min-width: 812px) and (max-width: 832px) {
+	
+	/*** Showcase ***/
+  #showcase .showcase-container {
+
+		@include flex(column, center, center);
+		
+		.showcase-content {
+			width: 80%;
+			position: relative;
+			left: 0;
+
+			h1 {
+				font-size: 2rem;
+				line-height: 40px;
+			}
+
+			p { font-size: .95rem }
+		}
+	}
+
+	.left-intro, .mid-intro, .right-intro { animation: none }
+}

@@ -10,12 +10,14 @@
 
 		&::after { background: $pink-primary }
 	}
+
 	.skills-container {
 		@include flex(row, space-around, center);
+		opacity: 0;
+		transform: translate(-170px, -70px);
 		
 		.skills-box {
 			
-
 			li {
 				padding: .5rem;
 				font-size: 1.3rem;
@@ -30,29 +32,12 @@
 			}
 		}
 	}
+
+	.skills-container, .section-header { transition: all 800ms ease-in-out }
 }
 
 /*** Skills Section Animations ***/
-.skills-intro { animation: skills-intro 1s ease-in-out forwards }
-.skill-header-intro { animation: skillsHeader-intro 1s ease-in-out forwards 700ms }
-
-@keyframes skills-intro {
-	from {
-		opacity: 0;
-		transform: translate(-170px, -70px);
-	}
-
-	to {
-		opacity: 1;
-		transform: translate(0, 0);
-	}
-}
-
-@keyframes skillsHeader-intro {
-
-	to {
-		transform: translateY(0);
-		opacity: 1;
-	}
-
-}
+#skills .skills-intro { 
+	transform: translate(0);
+	opacity: 1;
+ }

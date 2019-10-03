@@ -18,6 +18,9 @@ export const globalFunctionality = (() => {
 
 			ui.sliderNavigation(e);
 
+			// Because we check for pages in the ui script file
+			if(document.body.contains(document.getElementById('home-page'))) window.history.pushState({}, 'home', 'index.html') 
+
 			e.stopPropagation();
 
 		});
