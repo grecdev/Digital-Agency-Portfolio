@@ -1,8 +1,6 @@
 "use strict";
 // Ui functionality
 
-import jump from 'jump.js'
-
 class Ui {
 	constructor() {
 		// Ui Elements
@@ -43,9 +41,7 @@ class Ui {
 			document.querySelectorAll('.modal-link').forEach(link => link.classList.add('intro-link'));
 
 			// On mobile devices disable the intro animation
-			if(window.matchMedia('(min-width: 1025px)').matches) {
-				ui.shapeAnimations.forEach(shape => shape.classList.remove('left-intro', 'mid-intro', 'right-intro'));
-			}
+			if(window.matchMedia('(min-width: 1025px)').matches) ui.shapeAnimations.forEach(shape => shape.classList.remove('left-intro', 'mid-intro', 'right-intro'))
 			
 		} else if(e.currentTarget.dataset.toggle === 'hide' || e.target === ui.header_modal) {
 
