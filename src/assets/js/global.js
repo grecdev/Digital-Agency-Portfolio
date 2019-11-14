@@ -3,31 +3,20 @@
 
 import { ui } from './ui.js';
 
-export const globalFunctionality = (() => {
+window.addEventListener('scroll', (e) => {
 
-	function init() {
-		
-		window.addEventListener('scroll', (e) => {
+	ui.scrollFunctionality(e);
 
-			ui.scrollFunctionality(e);
+	e.stopPropagation();
+});
 
-			e.stopPropagation();
-		});
+document.addEventListener('DOMContentLoaded', (e) => {
 
-		document.addEventListener('DOMContentLoaded', (e) => {
+	ui.sliderNavigation(e);
 
-			ui.sliderNavigation(e);
+	// Because we check for pages in the ui script file
+	if(document.body.contains(document.getElementById('home-page'))) window.history.pushState({}, 'home', 'index.html') 
 
-			// Because we check for pages in the ui script file
-			if(document.body.contains(document.getElementById('home-page'))) window.history.pushState({}, 'home', 'index.html') 
+	e.stopPropagation();
 
-			e.stopPropagation();
-
-		});
-
-	}
-
-	return {
-		init
-	}
-})();
+});

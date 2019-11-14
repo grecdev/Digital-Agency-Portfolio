@@ -12,15 +12,26 @@ class Ui {
 		this.testimonial_box = document.querySelectorAll('.testimonial-box');
 		this.project_box = document.querySelectorAll('.project-box');
 		this.skills_header = document.querySelector('#skills .section-header');
-		// Menus / Sections
 		this.showcase = document.querySelector('#showcase');
 		this.header_modal = document.getElementById('desktop-modal-menu');
 		this.testimonial_container = document.querySelector('.testimonials-container');
 		this.skills_container = document.querySelector('#skills .skills-container');
+		this.form = document.getElementById('contact-form');
+		this.text_field = document.querySelectorAll('.text-field')
 		// Buttons
 		this.header_icon = document.getElementById('modal-menu-icon');
 		this.left_arrow = document.getElementById('left-arrow');
 		this.right_arrow = document.getElementById('right-arrow');
+		// Regex erros
+		this.fullName_error = document.querySelector('.fullName-error');
+		this.phoneNumber_error = document.querySelector('.phoneNumber-error');
+		this.email_error = document.querySelector('.email-error');
+		this.budget_error = document.querySelector('.budget-error');
+		// Inputs
+		this.fullName_input = document.getElementById('full-name');
+		this.phoneNumber_input = document.getElementById('phone-number');
+		this.email_input = document.getElementById('email');
+		this.budget_input = document.getElementById('budget');
 	}
 
 	// Header Modal Menu
@@ -219,6 +230,89 @@ class Ui {
 				}
 			}
 		}
+	}
+
+	// Label animation
+	labelAnimation(e) {
+
+		if(e.type === 'focus') e.target.nextElementSibling.classList.add('label-focus');
+
+		if(e.type === 'blur') {
+			// Remove the label only if the input is empty
+			if(e.target.value.length > 0) return
+			else e.target.nextElementSibling.classList.remove('label-focus')
+		}
+
+	}
+
+	regexValidation(e) {
+
+		if(e.type === 'blur' && e.target.tagName === 'INPUT') {
+
+			if(e.target === this.fullName_input) {
+
+				this.alert('Invalid Name, please type again', 'error', false, e.target);
+
+			}
+
+			if(e.target === this.phoneNumber_input) {
+
+				this.alert('Invalid Number, please type again', 'error', false, e.target);
+
+			}
+
+			if(e.target === this.email_input) {
+
+				this.alert('Invalid Email, please type again', 'error', false, e.target);
+
+			}
+
+			if(e.target === this.budget_input) {
+
+				this.alert('Budget is required, please type one', 'error', false, e.target);
+
+			}
+
+		}
+
+	}
+
+	alert(message, alertType, multiple, target) {
+		// message = obviously
+		// alertType = success / error
+		// multiple = true (when submiting the form and check all inputs) / false (single input)
+		// target = when we need to use the event object
+
+		// Create element
+		const p = document.createElement('p');
+
+		// Add custom text
+		p.appendChild(document.createTextNode(message));
+
+		if(alertType === 'error') {
+			// Remove error, so we have only one
+			document.querySelectorAll('.regex-alert').forEach(error => error.remove());
+
+			// Add the error styling
+			p.classList.add('regex-alert', 'text-center');
+
+			if(!multiple) {
+
+				target.classList.add('input-error');
+				p.classList.add('mb-xs');
+
+				if(target === this.fullName_input) this.fullName_error.insertAdjacentElement('beforeend', p);
+
+				if(target === this.phoneNumber_input) this.phoneNumber_error.insertAdjacentElement('beforeend', p);
+
+				if(target === this.email_input) this.email_error.insertAdjacentElement('beforeend', p);
+
+				if(target === this.budget_input) this.budget_error.insertAdjacentElement('beforeend', p);
+
+			}
+
+		}
+
 	}
 
 }

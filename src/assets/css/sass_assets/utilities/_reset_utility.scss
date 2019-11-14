@@ -175,3 +175,14 @@ svg {
 		&:hover { background: lighten($pink-primary, 5%) }
 	}
 }
+
+/** Regex styling **/
+.input-error { border-color: $red-primary !important }
+.input-succes { border-color: $green-primary !important }
+
+.regex-alert {
+	background: $red-primary;
+	border-radius: $border-radius-primary;
+	padding: .5rem 0;
+	width: 100%;
+}

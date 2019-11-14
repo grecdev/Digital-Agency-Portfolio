@@ -2,7 +2,6 @@
 	background: url('../imgs/contact-showcase.jpg') no-repeat center/cover;
 	color: $white;
 	padding: 2rem 1rem;
-	// height: 100vh;
 	width: 100%;
 
 	.section-header::after { background: linear-gradient(to left, lighten($purple-primary, 30%), $pink-primary, $pink-primary) }
@@ -26,12 +25,12 @@
 		width: 50%;
 
 		form {
-			@include grid(repeat(2, 1fr), 1rem);
+			@include grid(repeat(2, 1fr), 0);
+			align-items: flex-start;
 
 			.form-box {
 				position: relative;
-				height: 30px;
-				margin: 1rem 0;
+				margin: .5rem;
 			}
 
 			label {
@@ -42,23 +41,17 @@
 	
 			input, textarea {
 				@include font(1rem, inherit, 300);
-				position: absolute;
-				left: 0;
-				top: 0;
+				position: relative;
 				background: none;
 				outline: none;
 				border: 2px solid $pink-primary;
 				border-radius: 3px;
 				width: 100%;
-				height: 100%;
 				color: $white;
-				padding: 1rem .5rem;
+				padding: .5rem;
 				transition: transform 300ms ease-in-out;
 
 				&:focus { border: 2px solid lighten($pink-primary, 15%) }
-
-				/** Animation for focusing the inputs **/
-				&:focus + label { transform: translate(0px, -27px) }
 			}
 
 			label {
@@ -66,23 +59,23 @@
 				transition: transform 300ms ease-in-out;
 				background: transparent;
 				z-index: 50;
-				cursor: auto
+				cursor: auto;
+
+				/** Animation for focusing the inputs **/
+				&.label-focus { transform: translate(0px, -27px) }
 			}
 
 			.form-box:nth-child(5) {
 				height: 130px;
 				grid-column: 1 / -1;
-
-				label { transform: translate(10px, 9px) }
+				margin-top: 1.5rem;
 
 				textarea {
 					width: 100%;
 					font-weight: inherit;
 					font-family: inherit;
 					padding: .5rem;
-
-					/** Animation for focusing the inputs **/
-					&:focus + label { transform: translate(0px, -27px) }
+					height: 100%;
 				}
 			}
 
