@@ -30,7 +30,7 @@
 
 			.form-box {
 				position: relative;
-				margin: .5rem;
+				margin: .7rem .5rem;
 			}
 
 			label {
@@ -40,7 +40,7 @@
 			}
 	
 			input, textarea {
-				@include font(1rem, inherit, 300);
+				@include font(.9rem, inherit, 300);
 				position: relative;
 				background: none;
 				outline: none;
@@ -49,13 +49,14 @@
 				width: 100%;
 				color: $white;
 				padding: .5rem;
-				transition: transform 300ms ease-in-out;
+				
+				transition: transform 300ms ease-in-out, border-color 200ms ease-in-out;
 
 				&:focus { border: 2px solid lighten($pink-primary, 15%) }
 			}
 
 			label {
-				transform: translate(10.6px, 5px);
+				transform: translate(10.6px, 6px);
 				transition: transform 300ms ease-in-out;
 				background: transparent;
 				z-index: 50;
@@ -68,10 +69,9 @@
 			.form-box:nth-child(5) {
 				height: 130px;
 				grid-column: 1 / -1;
-				margin-top: 1.5rem;
+				margin: 1.5rem .5rem 1rem;
 
 				textarea {
-					width: 100%;
 					font-weight: inherit;
 					font-family: inherit;
 					padding: .5rem;
@@ -83,6 +83,14 @@
 				grid-column: 1 / -1;
 				grid-row: 4;
 				padding: 1rem;
+				width: 98%;
+				margin: 0 auto;
+			}
+
+			> .regex-alert {
+				width: 98%;
+				grid-column: 1 / -1;
+				margin: 1rem auto 0;
 			}
 		}
 	}

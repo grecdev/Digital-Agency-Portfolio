@@ -16,8 +16,7 @@ class Ui {
 		this.header_modal = document.getElementById('desktop-modal-menu');
 		this.testimonial_container = document.querySelector('.testimonials-container');
 		this.skills_container = document.querySelector('#skills .skills-container');
-		this.form = document.getElementById('contact-form');
-		this.text_field = document.querySelectorAll('.text-field')
+		this.form = document.getElementById('contact-form');	
 		// Buttons
 		this.header_icon = document.getElementById('modal-menu-icon');
 		this.left_arrow = document.getElementById('left-arrow');
@@ -32,11 +31,12 @@ class Ui {
 		this.phoneNumber_input = document.getElementById('phone-number');
 		this.email_input = document.getElementById('email');
 		this.budget_input = document.getElementById('budget');
+		this.disableLetter_input = document.querySelectorAll('.letter-disabled');
+		this.text_field = document.querySelectorAll('.text-field');
 	}
 
 	// Header Modal Menu
 	headerModal(e) {
-
 		if(e.currentTarget.dataset.toggle === 'show') {
 
 			// Change button state
@@ -247,32 +247,134 @@ class Ui {
 
 	regexValidation(e) {
 
-		if(e.type === 'blur' && e.target.tagName === 'INPUT') {
+		const globalRegex = {
+			emailRegex: /^[\w\W]+\@{1}(gmail|yahoo|hotmail|aol)\.(com|ro|co|co\.uk|fr)+$/g,
+			letterRegex: /^[aA-zZ\s-,]{3,}$/,
+			/* 
+			Phone format
+			+44 123 456 789
+			+40 123 456 789
+			+40123456789
+			+40-123-456-789
+			(1234) 567 890
+			(555) 555-1234
+		*/
+			phoneRegex: /^\+?(\(\+\d{2,3}\)?)?[\s-\.]?(\(?\d+\)?)[\s-\.]?(\d+)[\s-\.]?(\d+)$/g
+		};
+
+		// Regex for individual inputs
+		if(e.type === 'blur') {
 
 			if(e.target === this.fullName_input) {
 
-				this.alert('Invalid Name, please type again', 'error', false, e.target);
+				if(!globalRegex.letterRegex.test(this.fullName_input.value)) this.alert('Invalid Name, please type again', 'error', false, e.target);
+				else {
+					this.alert(null, 'success', false, e.target);
 
+					// If the input has been filled corectly
+					e.target.classList.add('input-filled');
+				}
+
+				if(this.fullName_input.value === '') {
+					this.alert('Name is required, please fill the input', 'error', false, e.target);
+
+					e.target.classList.remove('input-filled');
+				}
 			}
 
 			if(e.target === this.phoneNumber_input) {
 
-				this.alert('Invalid Number, please type again', 'error', false, e.target);
+				if(!globalRegex.phoneRegex.test(this.phoneNumber_input.value)) this.alert('Invalid Phone number, please type again', 'error', false, e.target);
+				else {
+					this.alert(null, 'success', false, e.target);
+
+					// If the input has been filled corectly
+					e.target.classList.add('input-filled');
+				}
+
+				if(this.phoneNumber_input.value === '') {
+					this.alert('Phone number is required, please fill the input', 'error', false, e.target);
+
+					e.target.classList.remove('input-filled');
+				}
 
 			}
 
 			if(e.target === this.email_input) {
 
-				this.alert('Invalid Email, please type again', 'error', false, e.target);
+				if(!globalRegex.emailRegex.test(this.email_input.value)) this.alert('Invalid Email, please type again', 'error', false, e.target);
+				else {
+					this.alert(null, 'success', false, e.target);
+
+					// If the input has been filled corectly
+					e.target.classList.add('input-filled');
+				}
+
+				if(this.email_input.value === '') {
+					this.alert('Email is required, please fill the input', 'error', false, e.target);
+
+					e.target.classList.remove('input-filled');
+				}
 
 			}
 
 			if(e.target === this.budget_input) {
 
-				this.alert('Budget is required, please type one', 'error', false, e.target);
+				if(this.budget_input.value.length < 3) this.alert('Minimum budget 100 $, please type again', 'error', false, e.target);
+				else {
+					this.alert(null, 'success', false, e.target);
+
+					// If the input has been filled corectly
+					e.target.classList.add('input-filled');
+				}
+
+				if(this.budget_input.value === '') {
+					this.alert('Budget is required, please fill the input', 'error', false, e.target);
+
+					e.target.classList.remove('input-filled');
+				}
 
 			}
+		}
 
+		// Regex for form submission
+		if(e.type === 'submit') {
+			// Variable state
+			let submit;
+
+			document.querySelectorAll('input[type="text"]').forEach(input => {
+				
+				// If input is empty
+				if(input.value === '' || !input.classList.contains('input-filled')) {
+					// Display error
+					input.classList.add('input-error');
+					this.alert('All fields are required, please fill the inputs', 'error', true, null);
+
+					// Remove the error
+					setTimeout(() => input.classList.remove('input-error'), 2500);
+
+					// Don't submit the form
+					submit = false;
+				}
+			
+			});
+
+			// If inputs are correct filled
+			if(globalRegex.letterRegex.test(this.fullName_input.value) && globalRegex.phoneRegex.test(this.phoneNumber_input.value) && globalRegex.emailRegex.test(this.email_input.value) && this.budget_input.value.length >= 3) {
+				// Reset the inputs
+				this.text_field.forEach(input => {
+					input.value = '';
+					input.classList.remove('input-filled', 'input-success');
+					input.nextElementSibling.classList.remove('label-focus');
+				});
+
+				this.alert('Form has been sent to our team !', 'success', true, null);
+
+				submit = true;
+			}
+
+			console.log('Form has been submited ?', submit);
+			return submit;
 		}
 
 	}
@@ -294,25 +396,69 @@ class Ui {
 			document.querySelectorAll('.regex-alert').forEach(error => error.remove());
 
 			// Add the error styling
-			p.classList.add('regex-alert', 'text-center');
+			p.classList.add('regex-alert', 'text-center', 'regex-error');
 
 			if(!multiple) {
 
 				target.classList.add('input-error');
 				p.classList.add('mb-xs');
 
+				// Add the error to specific input box
 				if(target === this.fullName_input) this.fullName_error.insertAdjacentElement('beforeend', p);
-
 				if(target === this.phoneNumber_input) this.phoneNumber_error.insertAdjacentElement('beforeend', p);
-
 				if(target === this.email_input) this.email_error.insertAdjacentElement('beforeend', p);
-
 				if(target === this.budget_input) this.budget_error.insertAdjacentElement('beforeend', p);
+			}
 
+			if(multiple) {
+				this.form.insertAdjacentElement('beforeend', p);
+
+				setTimeout(() => document.querySelectorAll('.regex-alert').forEach(error => error.remove()), 2500);
+			}
+		}
+
+		if(alertType === 'success') {
+			
+			if(!multiple) {
+				// Remove error styling
+				target.classList.remove('input-error');
+
+				target.classList.add('input-success');
+
+				setTimeout(() => target.classList.remove('input-success'), 1250);
+
+				// Remove error, so we have only one
+				document.querySelectorAll('.regex-alert').forEach(error => error.remove());
+			}
+
+			if(multiple) {
+				// Add the error styling
+				p.classList.add('regex-alert', 'text-center', 'regex-success');
+
+				// Add error to DOM
+				this.form.insertAdjacentElement('beforeend', p);
+
+				setTimeout(() => p.remove(), 2500);
 			}
 
 		}
 
+	}
+
+	disableLetters(e) {
+		// Disable shift
+		if(e.shiftKey) e.preventDefault();
+
+		/*
+			Numpad + normal keyboard numbers
+			+ && - and parentheses
+			Space && Ctrl + a && Backspace
+			dot
+			arrow keys
+			Tab
+		*/
+		if(e.which >= 48 && e.which <= 57 || e.which >= 96 && e.which <= 105 || e.which === 189 || e.which === 187 || e.which === 8 || e.which === 32 || e.which === 17 || e.which === 107 || e.which === 109 || e.ctrlKey || e.which === 190 || e.which === 110 || e.which >= 37 && e.which <= 40 || e.which === 9 || e.which === 123 || e.which === 116 || e.which === 191) return true
+		else e.preventDefault()
 	}
 
 }

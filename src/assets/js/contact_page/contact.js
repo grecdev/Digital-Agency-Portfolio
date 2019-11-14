@@ -5,7 +5,7 @@ import { ui } from '../ui.js';
 // Contact page functionality
 ui.form.addEventListener('submit', (e) => {
 
-	console.log(e.target);
+	ui.regexValidation(e);
 	
 	e.preventDefault();
 	e.stopPropagation();

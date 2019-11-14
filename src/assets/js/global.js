@@ -20,3 +20,14 @@ document.addEventListener('DOMContentLoaded', (e) => {
 	e.stopPropagation();
 
 });
+
+ui.disableLetter_input.forEach(input => {
+
+	input.addEventListener('keydown', (e) => {
+
+		ui.disableLetters(e);
+
+		e.stopPropagation();
+	});
+
+});
