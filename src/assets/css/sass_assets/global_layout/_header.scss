@@ -186,7 +186,7 @@ header {
 
 /** Header Scroll animation **/
 .header-fixed {
-	background: darken($purple-primary, 5%);
+	background: lighten($purple-primary, 10%);
 	padding: .5rem 1.5rem;
 
 	.logo { font-size: 1.3rem }

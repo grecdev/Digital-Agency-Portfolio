@@ -1,6 +1,9 @@
 "use strict";
 // Ui functionality
 
+import jump from 'jump.js'
+
+
 class Ui {
 	constructor() {
 		// Ui Elements
@@ -16,11 +19,13 @@ class Ui {
 		this.header_modal = document.getElementById('desktop-modal-menu');
 		this.testimonial_container = document.querySelector('.testimonials-container');
 		this.skills_container = document.querySelector('#skills .skills-container');
-		this.form = document.getElementById('contact-form');	
+		this.form = document.getElementById('contact-form');
+		this.home_page = document.getElementById('home-page');
 		// Buttons
 		this.header_icon = document.getElementById('modal-menu-icon');
 		this.left_arrow = document.getElementById('left-arrow');
 		this.right_arrow = document.getElementById('right-arrow');
+		this.resetScroll_btn = document.getElementById('reset-scroll');
 		// Regex erros
 		this.fullName_error = document.querySelector('.fullName-error');
 		this.phoneNumber_error = document.querySelector('.phoneNumber-error');
@@ -87,7 +92,7 @@ class Ui {
 		const pos = window.pageYOffset;
 
 		// Enable header fixed on desktop devices and home page
-		if(location.pathname.includes('index') && window.matchMedia('(min-width: 1025px)').matches) {
+		if(document.body.contains(ui.home_page) && window.matchMedia('(min-width: 1025px)').matches) {
 			// Disable it when header modal menu is visible
 			if(pos > 50 && !ui.header_modal.classList.contains('visible-flex')) ui.header.classList.add('header-fixed')
 			else ui.header.classList.remove('header-fixed')
@@ -99,6 +104,14 @@ class Ui {
 				ui.skills_header.classList.remove('skills-intro');
 				ui.skills_container.classList.remove('skills-intro');
 			}
+		}
+
+		// Reset scroll button
+		if(document.body.contains(ui.resetScroll_btn)) {
+
+			if(pos >= 950) ui.resetScroll_btn.classList.add('reset-active')
+			else ui.resetScroll_btn.classList.remove('reset-active')
+
 		}
 
 		// If we don't check for porfolio page, it gives error and bugs the whole script
@@ -440,9 +453,7 @@ class Ui {
 
 				setTimeout(() => p.remove(), 2500);
 			}
-
 		}
-
 	}
 
 	disableLetters(e) {
@@ -461,6 +472,20 @@ class Ui {
 		else e.preventDefault()
 	}
 
+	resetScroll(e) {
+
+		if(e.type === 'click' && e.currentTarget === this.resetScroll_btn && e.currentTarget.dataset.eventToggle === 'true') {
+
+			// Disable the click on element
+			e.currentTarget.setAttribute('data-event-toggle', 'false');
+
+			jump('body', { duration: 1000 });
+
+			// Enable the click on element
+			setTimeout(() => this.resetScroll_btn.setAttribute('data-event-toggle', 'true'), 1000);
+		}
+		
+	}
 }
 
 export const ui = new Ui();
