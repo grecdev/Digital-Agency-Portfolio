@@ -45,7 +45,7 @@
 				bottom: 25px;
 			}
 
-			/** Added the images with background property because it makes the img shrinks **/
+			/** Added the images with background property because it makes the img shrinks and images are better optimized / resized **/
 			&:nth-child(1) .testimonial-image { background: url('../imgs/steve-testimonial.jpg') no-repeat center/cover }
 			&:nth-child(2) .testimonial-image { background: url('../imgs/bill-testimonial.jpg') no-repeat center/cover }
 			&:nth-child(3) .testimonial-image { background: url('../imgs/mark-testimonial.jpg') no-repeat center/cover }
@@ -91,4 +91,5 @@
 	to { transform: translateX(5px) }
 }
 
+/* Added with JS */
 .outer-box { visibility: hidden }

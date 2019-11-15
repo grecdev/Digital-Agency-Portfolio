@@ -26,6 +26,7 @@ class Ui {
 		this.left_arrow = document.getElementById('left-arrow');
 		this.right_arrow = document.getElementById('right-arrow');
 		this.resetScroll_btn = document.getElementById('reset-scroll');
+		this.slider_buttons = document.querySelector('.slider-buttons');
 		// Regex erros
 		this.fullName_error = document.querySelector('.fullName-error');
 		this.phoneNumber_error = document.querySelector('.phoneNumber-error');
@@ -42,6 +43,8 @@ class Ui {
 
 	// Header Modal Menu
 	headerModal(e) {
+
+		// Show modal
 		if(e.currentTarget.dataset.toggle === 'show') {
 
 			// Change button state
@@ -59,6 +62,7 @@ class Ui {
 			// On mobile devices disable the intro animation
 			if(window.matchMedia('(min-width: 1025px)').matches) ui.shapeAnimations.forEach(shape => shape.classList.remove('left-intro', 'mid-intro', 'right-intro'))
 			
+			// Hide modal
 		} else if(e.currentTarget.dataset.toggle === 'hide' || e.target === ui.header_modal) {
 
 			// Change button state
@@ -73,7 +77,7 @@ class Ui {
 			// Remove links animation
 			document.getElementById('desktop-modal-menu').classList.remove('visible-flex');
 
-			// On mobile devices enable the intro animation
+			// On desktop enable the intro animation
 			if(window.matchMedia('(min-width: 1025px)').matches && document.body.contains(ui.showcase)) {
 
 				ui.left_shape.classList.add('left-intro');
@@ -149,8 +153,11 @@ class Ui {
 					const startingPosition = (boxWidth * index) - boxWidth * 1;
 					// the operation: boxWidth * 1 => how manny boxes should be on the outer sides.
 					// If we want to show only 3 boxes the total number of boxes inside testimonial container should be even. 5, 7, 9...
-					// Can always be changed if the client wants that. From css / html / js file
 	
+					// So the boxes are moved instantly
+					box.style.transition = 'none';
+					setTimeout(() => box.style.transition = '', 100);
+
 					// Set the initial position
 					box.style.transform = `translateX(${startingPosition}px)`;
 	
@@ -159,7 +166,7 @@ class Ui {
 	
 			if(e.type === 'click') {
 				// Left arrow
-				if(e.currentTarget === ui.left_arrow && e.currentTarget.dataset.enable === 'true') {
+				if(e.currentTarget === ui.left_arrow && e.currentTarget.dataset.eventToggle === 'true') {
 		
 					this.testimonial_box.forEach(box => {
 		
@@ -175,7 +182,7 @@ class Ui {
 						// Check the current outer left position
 						const outerPosition = Math.round(box.getBoundingClientRect().left);
 	
-						// number 4 = how manny boxes are in visible + one that is outside of the container
+						// number 4 = how manny boxes are visible + one that is outside of the container
 						// For mobile devices aswell if we have on box showing we add 2 box widths + current position
 						let resetPosition;
 
@@ -198,12 +205,17 @@ class Ui {
 					});
 		
 					// Button state so the animation won't trigger on multiple clicks ( comment out so you can see better )
-					this.left_arrow.setAttribute('data-enable', 'false');
-					setTimeout(() => this.left_arrow.setAttribute('data-enable', 'true'), 700);
+					// I use Array.from method because .children return an Html Collection and forEach works only on array or array like objects
+					Array.from(this.slider_buttons.children).forEach(buttons => {
+
+						buttons.setAttribute('data-event-toggle', 'false');
+
+						setTimeout(() => buttons.setAttribute('data-event-toggle', 'true'), 700);
+					});
 		
 				}
 				// Right Arrow
-				else if(e.currentTarget === ui.right_arrow && e.currentTarget.dataset.enable === 'true') {
+				else if(e.currentTarget === ui.right_arrow && e.currentTarget.dataset.eventToggle === 'true') {
 		
 					this.testimonial_box.forEach(box => {
 		
@@ -219,12 +231,13 @@ class Ui {
 						// Check the current outer left position
 						const outerPosition = Math.round(box.getBoundingClientRect().left);
 	
-						// Because the box position is set to absolute, -boxWidth puts the translate position at '0' - boxWidth, '0' being the container starting widt
+						// Because the box position is set to absolute, -boxWidth puts the translate position at (0 - boxWidth) => translateX(-388px); '0' being the container starting width
+						// See with inspect element the outer left box
 						const resetPosition = -boxWidth;
 				
 						// If the outer left box position is out of the container
 						if(outerPosition > containerWidth) {
-		
+
 							// Reset the translate value
 							box.style.transform = `translateX(${resetPosition}px)`;
 		
@@ -234,12 +247,16 @@ class Ui {
 							// Show the class so we can see it when the testimonial moves
 							setTimeout(() => box.classList.remove('outer-box'), 550);
 						}
-		
 					});
 		
 					// Button state so the animation won't trigger on multiple clicks ( comment out so you can see better )
-					this.right_arrow.setAttribute('data-enable', 'false');
-					setTimeout(() => this.right_arrow.setAttribute('data-enable', 'true'), 700);
+					// I use Array.from method because .children return an Html Collection and forEach works only on array or array like objects
+					Array.from(this.slider_buttons.children).forEach(buttons => {
+
+						buttons.setAttribute('data-event-toggle', 'false');
+
+						setTimeout(() => buttons.setAttribute('data-event-toggle', 'true'), 700);
+					});
 				}
 			}
 		}
