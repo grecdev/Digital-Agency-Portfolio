@@ -14,36 +14,46 @@
   ##Screen = B/w 768px to 1024px
 */
 
-@media (min-width: 768px) and (max-width: 1024px) {
+@media (min-width: 768px) and (max-width: 1023px) {
   
   /** Footer header **/
-	footer .footer-header .footer-header-container { width: 50% }
+	footer .footer-header .footer-header-container { width: 70% }
 
-	#desktop-modal-menu .modal-link { width: 30% }
+	footer .footer-content {
+		@include grid(repeat(5, 1fr), 0);
+		align-items: flex-start;
 
-	/*** Header ***/
-	header {
-		background: darken($purple-primary, 5%);
-		padding: .5rem 1.5rem;
+		.footer-box {
+			width: 100%;
 
-		.logo { font-size: 1.5rem }
+			.footer-address, &:nth-child(2) {
+				@include flex(row, flex-start, flex-start);
+				flex-wrap: wrap;
+			}
 
-		#modal-menu-icon {
-			width: 40px;
-			height: 40px;
-			
-			.modal-bar {
-				width: 10px;
-				transform: rotate(45deg) translate(-6px, -5.5px);
-				transition: translate 0s;
+			.footer-address li,
+			&:nth-child(2) a {
+				width: 50%;
+				margin: .5rem 0;
+			}
 
-				&:before { transform: rotate(90deg) translate(4px, -6px) }
+			&:nth-child(2) { text-align: right }
 
-				&:after { transform: rotate(0) translate(10px, 10px) }
+			&:first-child {
+				grid-column: 1 / -1;
+				text-align: center;
+				grid-row: 2;
+				margin-top: 1.5rem;
+			}
+
+			&:last-child {
+				grid-column: 3 / -1;
 			}
 		}
+		
 	}
-  
+
+	#desktop-modal-menu .modal-link { width: 30% }
 }
 
 /* 
@@ -55,7 +65,7 @@
   
   /** Footer header **/
 	footer .footer-header .footer-header-container { width: 50% }
-  
+	
 }
 
 /* 
@@ -119,6 +129,10 @@
 	
 	footer .footer-content { font-size: .8rem }  
 
+	#reset-scroll {
+		right: 15px;
+		bottom: 15px;
+	}
 }
 
 /* 
@@ -185,18 +199,73 @@
 		font-size: .8rem;
 		@include flex(column, center, center);
 
-		.footer-box { margin: .5rem 0 }
+		.footer-box {
+			margin: .5rem 0;
+			width: 40%;
+			text-align: left;
+
+			&:first-child {
+				width: 100%;
+				text-align: center;
+			}
+
+			&:last-child { margin-top: 0 }
+		}
 	}
 
 	footer .footer-content .footer-box:first-child p { font-size: .85rem }
-  
+	
+	#reset-scroll {
+		right: 15px;
+		bottom: 15px;
+	}
 }
 
-/*** Ihone SE ***/
-@media screen and (max-width: 320px) {
-	.footer-padding-reset {
-    padding-bottom: 25rem;
+/* Iphone SE - landscape */
+@media screen and (max-width: 568px) and (orientation: landscape) {
+	/*** Footer ***/
+	.footer-padding-reset { padding-bottom: 22rem }
+
+	footer .footer-content {
+		font-size: .8rem;
+		@include flex(column, center, center);
+
+		.footer-box {
+			margin: .5rem 0;
+			width: 40%;
+			text-align: left;
+
+			&:first-child {
+				width: 100%;
+				text-align: center;
+			}
+
+			&:last-child { margin-top: 0 }
+		}
 	}
+
+	footer .footer-content .footer-box:first-child p { font-size: .85rem }
+}
+
+/*** Iphone SE - portrait ***/
+@media screen and (max-width: 320px) {
+	.footer-padding-reset { padding-bottom: 25rem };
+
+	/** Footer header **/
+	footer .footer-header .footer-header-container {
+		@include flex(column, flex-start, center);
+
+		h3 { font-size: 1.3rem }
+
+		p { font-size: 1rem; }
+
+		a { margin-top: 1rem }
+
+		span i { font-size: 2rem }
+	}
+
+	footer .footer-content .footer-box { width: 45% }
+	
 }
 
 /** Iphone X / Pixel 2 XL ( Landscape ) **/

@@ -188,24 +188,3 @@ svg {
 
 .regex-success { background: $green-primary }
 .regex-error { background: $red-primary }
-
-#reset-scroll {
-	position: fixed;
-	right: 30px;
-	bottom: 30px;
-	background: lighten($purple-primary, 10%);
-	color: $white;
-	border-radius: 50%;
-	width: 50px;
-	height: 50px;
-	@include flex(column, center, center);
-	transition: all 300ms ease-in-out;
-	cursor: pointer;
-	visibility: hidden;
-	transform: scale(0);
-}
-
-#reset-scroll.reset-active {
-	visibility: visible;
-	transform: scale(1);
-}

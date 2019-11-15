@@ -12,13 +12,13 @@
 		position: relative;
 
 		.showcase-content {
-			width: 38%;
+			width: 30%;
 			position: absolute;
-			left: 150px;
+			left: 5%;
 			z-index: 1;
 
 			h1 {
-				@include font(4rem, inherit, 400);
+				@include font(3rem, inherit, 400);
 				line-height: 80px;
 			}
 		}

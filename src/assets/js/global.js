@@ -14,6 +14,9 @@ document.addEventListener('DOMContentLoaded', (e) => {
 
 	ui.sliderNavigation(e);
 
+	// For mobile devices disable header animation
+	if(window.matchMedia('(max-width: 1025px').matches) ui.header.classList.add('header-fixed')
+
 	e.stopPropagation();
 
 });

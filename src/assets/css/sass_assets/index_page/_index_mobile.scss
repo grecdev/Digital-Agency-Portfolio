@@ -5,7 +5,7 @@
 
 @media (min-width: 1025px) and (max-width: 1280px) {
 	
-	// Showcase animation
+	/* Showcase animation */
   @keyframes left-triangle {
 		from { transform: translate(0,0) rotate(0) }
 	
@@ -24,8 +24,69 @@
 		to { transform: translate(160px, -90px) rotate(30deg) }
 	}
 
-	// Footer header
+	#showcase .showcase-container .showcase-content { width: 50% }
+
 	footer .footer-header .footer-header-container { width: 50% }
+}
+
+/* iPad Pro Portrait */
+@media only screen and (min-width: 1024px) and (max-height: 1366px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1.5) {
+
+	/* Showcase animation */
+  @keyframes left-triangle {
+		from { transform: translate(0,0) rotate(0) }
+	
+		to { transform: translate(-180px, 80px) rotate(-40deg) }
+	}
+	
+	@keyframes mid-triangle {
+		from { transform: translate(0,0) rotate(0) }
+	
+		to { transform: translate(-20px, 190px) rotate(5deg) }
+	}
+	
+	@keyframes right-triangle {
+		from { transform: translate(0,0) rotate(0) }
+	
+		to { transform: translate(160px, -220px) rotate(20deg) }
+	}
+
+	#showcase .showcase-container .showcase-content { width: 50% }
+
+	footer .footer-header .footer-header-container { width: 50% }
+
+	#skills .skills-container, #skills .section-header {
+		transform: none;
+		opacity: 1;
+	}
+}
+
+/* iPad Pro Landscape */
+@media only screen and (min-width: 1366px) and (max-height: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 1.5) {
+
+	/* Showcase animation */
+  @keyframes left-triangle {
+		from { transform: translate(0,0) rotate(0) }
+	
+		to { transform: translate(-380px, 80px) rotate(-40deg) }
+	}
+	
+	@keyframes mid-triangle {
+		from { transform: translate(0,0) rotate(0) }
+	
+		to { transform: translate(-20px, 190px) rotate(5deg) }
+	}
+	
+	@keyframes right-triangle {
+		from { transform: translate(0,0) rotate(0) }
+	
+		to { transform: translate(160px, -220px) rotate(20deg) }
+	}
+
+	#showcase .showcase-container .showcase-content { width: 50% }
+
+	footer .footer-header .footer-header-container { width: 50% }
+
 }
 
 /* 
@@ -33,24 +94,98 @@
   ##Screen = B/w 768px to 1024px
 */
 
-@media (min-width: 768px) and (max-width: 1024px) {
+@media (min-width: 768px) and (max-width: 1023px) {
+	/* Showcase animation */
+  @keyframes left-triangle {
+		from { transform: translate(0,0) rotate(0) }
 	
-	/*** Showcase ***/
-  #showcase .showcase-container {
+		to { transform: translate(80px, 100px) rotate(-40deg) }
+	}
+	
+	@keyframes mid-triangle {
+		from { transform: translate(0,0) rotate(0) }
+	
+		to { transform: translate(150px, 200px) rotate(5deg) }
+	}
+	
+	@keyframes right-triangle {
+		from { transform: translate(0,0) rotate(0) }
+	
+		to { transform: translate(160px, -220px) rotate(20deg) }
+	}
 
-		.showcase-content {
-			width: 60%;
+	#showcase .showcase-container .showcase-content { width: 70% }
+	
+	#steps .steps-container { grid-template-columns: repeat(2, 1fr) }
+
+	#partners .partners-container {
+		flex-wrap: wrap;
+
+		.partners-box {
+			width: 30%;
+			margin: 1rem 3rem;
 		}
 	}
 
-	#skills  {
+	#skills .skills-container .skills-box li { font-size: 1rem }
 
-		.section-header, .skills-container {
-			transform: none;
-			opacity: 1;
+	#skills .skills-container, #skills .section-header {
+		transform: none;
+		opacity: 1;
+	}
+}
+
+/* 
+  ##Device = Tablets, Ipads (landscape)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  
+	/* Showcase animation */
+	@keyframes left-triangle {
+		from { transform: translate(0,0) rotate(0) }
+
+		to { transform: translate(-40px, 80px) rotate(-50deg) }
+	}
+
+	@keyframes mid-triangle {
+		from { transform: translate(0,0) rotate(0) }
+
+		to { transform: translate(150px, 200px) rotate(5deg) }
+	}
+
+	@keyframes right-triangle {
+		from { transform: translate(0,0) rotate(0) }
+
+		to { transform: translate(180px, -150px) rotate(25deg) }
+	}
+
+	#showcase .showcase-container .showcase-content { width: 70% }
+
+	#steps .steps-container { grid-template-columns: repeat(2, 1fr) }
+
+	#partners .partners-container {
+		flex-wrap: wrap;
+
+		.partners-box {
+			width: 31%;
+			margin: 1rem;
+
+			img {
+				width: 70%;
+				margin: 0 auto;
+			}
 		}
 	}
-	
+
+	#skills .skills-container .skills-box li { font-size: 1rem }
+
+	#skills .skills-container, #skills .section-header {
+		transform: none;
+		opacity: 1;
+	}
+  
 }
 
 /* 
@@ -62,7 +197,6 @@
 	
 	/*** Showcase ***/
   #showcase .showcase-container {
-
 		@include flex(column, center, center);
 		
 		.showcase-content {
@@ -103,12 +237,17 @@
 		}
 
 		.skills-container {
-			@include flex(column, center, center);
+			@include flex(column, flex-start, flex-start);
 
 			.skills-box {
 				width: 100%;
-				
-				li { @include flex(row, center, center) }
+
+				ul { @include flex(column, center, center) }
+
+				li {
+					width: 50%;
+    			padding-left: 3rem;
+				}
 			}
 		}
 	}
@@ -133,7 +272,6 @@
   
   /*** Showcase ***/
   #showcase .showcase-container {
-
 		@include flex(column, center, center);
 		
 		.showcase-content {
@@ -142,7 +280,7 @@
 			left: 0;
 
 			h1 {
-				font-size: 2.5rem;
+				font-size: 2rem;
 				line-height: 40px;
 			}
 
@@ -176,12 +314,17 @@
 		}
 
 		.skills-container {
-			@include flex(column, center, center);
+			@include flex(column, flex-start, flex-start);
 
 			.skills-box {
 				width: 100%;
-				
-				li { @include flex(row, center, center) }
+
+				ul { @include flex(column, center, center) }
+
+				li {
+					width: 98%;
+					padding-left: 4rem;
+				}
 			}
 		}
 	}
@@ -199,10 +342,32 @@
 
 /** Iphone X / Pixel 2 XL ( Landscape ) **/
 @media screen and (min-width: 812px) and (max-width: 832px) {
+
+	#steps .steps-container { grid-template-columns: repeat(2, 1fr) }
+
+	#partners .partners-container {
+		flex-wrap: wrap;
+
+		.partners-box {
+			width: 31%;
+			margin: 1rem;
+
+			img {
+				width: 70%;
+				margin: 0 auto;
+			}
+		}
+	}
+
+	#skills .skills-container .skills-box li { font-size: 1rem }
+
+	#skills .skills-container, #skills .section-header {
+		transform: none;
+		opacity: 1;
+	}
 	
 	/*** Showcase ***/
   #showcase .showcase-container {
-
 		@include flex(column, center, center);
 		
 		.showcase-content {
@@ -220,4 +385,82 @@
 	}
 
 	.left-intro, .mid-intro, .right-intro { animation: none }
+}
+
+/*** Ihone SE - Portrait ***/
+@media screen and (max-width: 320px) {
+
+	/*** Showcase ***/
+  #showcase .showcase-container .showcase-content h1 {
+		font-size: 1.5rem;
+		line-height: 35px;
+	}
+
+	.showcase-animation-container { right: -145px }
+
+	.left-intro, .mid-intro, .right-intro { animation: none }
+
+	/*** Steps Section ***/
+	#steps .steps-container {
+		@include grid(1fr, 0);
+		
+		.steps-box {
+			padding: 1rem;
+
+			&-header { font-size: 2rem }
+
+			&-description h4 { font-size: 1.2rem }
+		}
+	}
+	
+	/*** Services Section ***/
+	#skills  {
+
+		.section-header, .skills-container {
+			transform: none;
+			opacity: 1;
+		}
+
+		.skills-container {
+			@include flex(column, flex-start, flex-start);
+
+			.skills-box {
+				width: 100%;
+
+				ul { @include flex(column, center, center) }
+
+				li {
+					font-size: 1rem;
+					width: 98%;
+					padding-left: 1rem;
+				}
+			}
+		}
+	}
+
+	/*** Partners section ***/
+	#partners .partners-container {
+		flex-wrap: wrap;
+
+		.partners-box {
+			width: 100%;
+			margin: 1rem 0;
+
+			img {
+				width: 50%;
+				margin: 0 auto;
+			}
+		}
+	}
+
+}
+
+/* Iphone SE - landscape */
+@media screen and (max-width: 568px) and (orientation: landscape) {
+	#skills .skills-container .skills-box li {
+    width: 60%;
+    padding-left: 1rem;
+	}
+
+	footer .footer-header .footer-header-container { width: 80% }
 }

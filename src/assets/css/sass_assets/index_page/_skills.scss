@@ -20,12 +20,14 @@
 			
 			li {
 				padding: .5rem;
-				font-size: 1.3rem;
+				font-size: 1.2rem;
 				@include flex(row, flex-start, center);
 
 				i {
-					margin-right: 1rem;
 					font-size: 2rem;
+					width: 50px;
+					height: 30px;
+					line-height: 30px;
 				}
 
 				a { display: block }
@@ -37,7 +39,7 @@
 }
 
 /*** Skills Section Animations ***/
-#skills .skills-intro { 
+#skills .skills-intro {
 	transform: translate(0);
 	opacity: 1;
  }

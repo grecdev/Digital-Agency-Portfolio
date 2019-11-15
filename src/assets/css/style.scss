@@ -3,29 +3,25 @@
 @import './sass_assets/utilities/mixins_extends';
 @import './sass_assets/utilities/reset_utility';
 
-// Layout
-@import './sass_assets/global_layout/global';
-
-// Header & Footer
+// Global
 @import './sass_assets/global_layout/header';
 @import './sass_assets/global_layout/footer';
+@import './sass_assets/global_layout/global';
+@import './sass_assets/global_layout/global_mobile';
 
 // INDEX PAGE
 @import './sass_assets/index_page/showcase';
 @import './sass_assets/index_page/skills';
 @import './sass_assets/index_page/steps';
 @import './sass_assets/index_page/partners';
+@import './sass_assets/index_page/index_mobile';
 
 // CONTACT PAGE
 @import './sass_assets/contact_page/contact_showcase';
+@import './sass_assets/contact_page/contact_mobile';
 
 // PORTFOLIO PAGE
 @import './sass_assets/portfolio_page/portfolio_showcase';
 @import './sass_assets/portfolio_page/projects';
 @import './sass_assets/portfolio_page/testimonials';
-
-// Mobile Responsive Layout
-@import './sass_assets/global_layout/global_mobile';
-@import './sass_assets/contact_page/contact_mobile';
-@import './sass_assets/index_page/index_mobile';
 @import './sass_assets/portfolio_page/portfolio_mobile';

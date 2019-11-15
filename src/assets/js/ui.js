@@ -95,7 +95,7 @@ class Ui {
 		// Get the page position
 		const pos = window.pageYOffset;
 
-		// Enable header fixed on desktop devices and home page
+		// Enable header animation on desktop devices and home page
 		if(document.body.contains(ui.home_page) && window.matchMedia('(min-width: 1025px)').matches) {
 			// Disable it when header modal menu is visible
 			if(pos > 50 && !ui.header_modal.classList.contains('visible-flex')) ui.header.classList.add('header-fixed')
