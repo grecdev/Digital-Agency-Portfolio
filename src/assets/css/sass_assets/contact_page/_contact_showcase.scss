@@ -32,12 +32,6 @@
 				position: relative;
 				margin: .7rem .5rem;
 			}
-
-			label {
-				position: absolute;
-				left: 0;
-				top: 0;
-			}
 	
 			input, textarea {
 				@include font(.9rem, inherit, 300);
@@ -49,21 +43,23 @@
 				width: 100%;
 				color: $white;
 				padding: .5rem;
-				
 				transition: transform 300ms ease-in-out, border-color 200ms ease-in-out;
 
 				&:focus { border: 2px solid lighten($pink-primary, 15%) }
 			}
 
 			label {
-				transform: translate(10.6px, 6px);
+				position: absolute;
+				left: 0;
+				top: 0;
+				transform: translate(10px, 20%);
 				transition: transform 300ms ease-in-out;
 				background: transparent;
 				z-index: 50;
 				cursor: auto;
 
 				/** Animation for focusing the inputs **/
-				&.label-focus { transform: translate(0px, -27px) }
+				&.label-focus { transform: translate(0px, -27px) !important }
 			}
 
 			.form-box:nth-child(5) {

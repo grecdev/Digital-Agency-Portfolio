@@ -156,7 +156,7 @@
 
 	.header-fixed .logo { font-size: 1rem }
 
-	body { padding-bottom: 14.5rem }
+	body { padding-bottom: 14rem }
 	
 	/*** Header ***/
 	header {
@@ -249,7 +249,10 @@
 
 /*** Iphone SE - portrait ***/
 @media screen and (max-width: 320px) {
-	.footer-padding-reset { padding-bottom: 25rem };
+
+	.footer-padding-reset { padding-bottom: 25rem }
+
+	body { padding-bottom: 15rem }
 
 	/** Footer header **/
 	footer .footer-header .footer-header-container {
@@ -267,6 +270,9 @@
 	footer .footer-content .footer-box { width: 45% }
 	
 }
+
+/* Iphone SE - landscape */
+@media screen and (max-width: 568px) and (orientation: landscape) { body { padding-bottom: 14rem } }
 
 /** Iphone X / Pixel 2 XL ( Landscape ) **/
 @media screen and (min-width: 812px) and (max-width: 832px) {

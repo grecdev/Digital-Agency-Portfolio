@@ -183,12 +183,8 @@ class Ui {
 						const outerPosition = Math.round(box.getBoundingClientRect().left);
 	
 						// number 4 = how manny boxes are visible + one that is outside of the container
-						// For mobile devices aswell if we have on box showing we add 2 box widths + current position
-						let resetPosition;
-
-						if(window.matchMedia('(min-width: 320px) and (max-width: 480px)').matches) resetPosition = currentPosition + (boxWidth * 2);
-						else resetPosition = currentPosition + (boxWidth * 4);
-				
+						let resetPosition = currentPosition + (boxWidth * 4);
+						
 						// If the outer left box position is out of the container
 						if(outerPosition < 0) {
 		
@@ -269,10 +265,9 @@ class Ui {
 
 		if(e.type === 'blur') {
 			// Remove the label only if the input is empty
-			if(e.target.value.length > 0) return
-			else e.target.nextElementSibling.classList.remove('label-focus')
+			if(e.target.value.length > 0) return false;
+			else e.target.nextElementSibling.classList.remove('label-focus');
 		}
-
 	}
 
 	regexValidation(e) {
