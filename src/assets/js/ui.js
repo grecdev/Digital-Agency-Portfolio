@@ -27,11 +27,7 @@ class Ui {
 		this.right_arrow = document.getElementById('right-arrow');
 		this.resetScroll_btn = document.getElementById('reset-scroll');
 		this.slider_buttons = document.querySelector('.slider-buttons');
-		// Regex erros
-		this.fullName_error = document.querySelector('.fullName-error');
-		this.phoneNumber_error = document.querySelector('.phoneNumber-error');
-		this.email_error = document.querySelector('.email-error');
-		this.budget_error = document.querySelector('.budget-error');
+		this.form_btn = document.getElementById('contactForm-btn');
 		// Inputs
 		this.fullName_input = document.getElementById('full-name');
 		this.phoneNumber_input = document.getElementById('phone-number');
@@ -273,17 +269,26 @@ class Ui {
 	regexValidation(e) {
 
 		const globalRegex = {
+			/*
+			email@gmail.com / ro / co / co.uk / fr
+			email@yahoo.com / ro / co / co.uk / fr
+			email@hotmail.com / ro / co / co.uk / fr
+			email@aol.com / ro / co / co.uk / fr
+			*/
 			emailRegex: /^[\w\W]+\@{1}(gmail|yahoo|hotmail|aol)\.(com|ro|co|co\.uk|fr)+$/g,
 			letterRegex: /^[aA-zZ\s-,]{3,}$/,
 			/* 
 			Phone format
+			0777123456
+			0777 123 456
+			0777-123-456
 			+44 123 456 789
 			+40 123 456 789
 			+40123456789
 			+40-123-456-789
 			(1234) 567 890
 			(555) 555-1234
-		*/
+			*/
 			phoneRegex: /^\+?(\(\+\d{2,3}\)?)?[\s-\.]?(\(?\d+\)?)[\s-\.]?(\d+)[\s-\.]?(\d+)$/g
 		};
 
@@ -291,75 +296,29 @@ class Ui {
 		if(e.type === 'blur') {
 
 			if(e.target === this.fullName_input) {
-
-				if(!globalRegex.letterRegex.test(this.fullName_input.value)) this.alert('Invalid Name, please type again', 'error', false, e.target);
-				else {
-					this.alert(null, 'success', false, e.target);
-
-					// If the input has been filled corectly
-					e.target.classList.add('input-filled');
-				}
-
-				if(this.fullName_input.value === '') {
-					this.alert('Name is required, please fill the input', 'error', false, e.target);
-
-					e.target.classList.remove('input-filled');
-				}
+				if(globalRegex.letterRegex.test(this.fullName_input.value)) this.alert(null, 'success', false, e.target);
+				else this.alert('Invalid Name, please type again', 'error', false, e.target);
 			}
 
 			if(e.target === this.phoneNumber_input) {
-
-				if(!globalRegex.phoneRegex.test(this.phoneNumber_input.value)) this.alert('Invalid Phone number, please type again', 'error', false, e.target);
-				else {
-					this.alert(null, 'success', false, e.target);
-
-					// If the input has been filled corectly
-					e.target.classList.add('input-filled');
-				}
-
-				if(this.phoneNumber_input.value === '') {
-					this.alert('Phone number is required, please fill the input', 'error', false, e.target);
-
-					e.target.classList.remove('input-filled');
-				}
-
+				if(globalRegex.phoneRegex.test(this.phoneNumber_input.value)) this.alert(null, 'success', false, e.target);
+				else this.alert('Invalid Phone number, please type again', 'error', false, e.target);
 			}
+		
 
 			if(e.target === this.email_input) {
-
-				if(!globalRegex.emailRegex.test(this.email_input.value)) this.alert('Invalid Email, please type again', 'error', false, e.target);
-				else {
-					this.alert(null, 'success', false, e.target);
-
-					// If the input has been filled corectly
-					e.target.classList.add('input-filled');
-				}
-
-				if(this.email_input.value === '') {
-					this.alert('Email is required, please fill the input', 'error', false, e.target);
-
-					e.target.classList.remove('input-filled');
-				}
-
+				if(globalRegex.emailRegex.test(this.email_input.value)) this.alert(null, 'success', false, e.target);
+				else this.alert('Invalid Email, please type again', 'error', false, e.target);
 			}
 
 			if(e.target === this.budget_input) {
-
-				if(this.budget_input.value.length < 3) this.alert('Minimum budget 100 $, please type again', 'error', false, e.target);
-				else {
-					this.alert(null, 'success', false, e.target);
-
-					// If the input has been filled corectly
-					e.target.classList.add('input-filled');
-				}
-
-				if(this.budget_input.value === '') {
-					this.alert('Budget is required, please fill the input', 'error', false, e.target);
-
-					e.target.classList.remove('input-filled');
-				}
-
+				if(this.budget_input.value.length >= 3) this.alert(null, 'success', false, e.target);
+				else this.alert('Minimum budget 100 $, please type again', 'error', false, e.target);
 			}
+
+			if(e.target.tagName === 'TEXTAREA' && e.target.value.length > 0) this.alert(null, 'success', false, e.target);
+
+			if(e.target.value === '') this.alert(`${e.target.nextElementSibling.textContent} is empty, please fill the input.`, 'error', false, e.target);
 		}
 
 		// Regex for form submission
@@ -367,34 +326,34 @@ class Ui {
 			// Variable state
 			let submit;
 
-			document.querySelectorAll('input[type="text"]').forEach(input => {
-				
-				// If input is empty
-				if(input.value === '' || !input.classList.contains('input-filled')) {
-					// Display error
+			// This array is compared to the number of all inputs
+			const filledInputs = [];
+
+			this.text_field.forEach(input => {
+
+				// If inputs are not corectly filled / blank
+				if(!input.classList.contains('input-filled')) {
+
+					// Display the alert
+					this.alert('All inputs are required !', 'error', true, e.target);
+					// Highlight the inputs
 					input.classList.add('input-error');
-					this.alert('All fields are required, please fill the inputs', 'error', true, null);
-
-					// Remove the error
-					setTimeout(() => input.classList.remove('input-error'), 2500);
-
+					// Reset the wrong / blank inputs
+					setTimeout(() => input.classList.remove('input-error'), 2000);
 					// Don't submit the form
 					submit = false;
+
 				}
-			
+				// Get all the inputs that are correct
+				else filledInputs.push(input);
 			});
 
-			// If inputs are correct filled
-			if(globalRegex.letterRegex.test(this.fullName_input.value) && globalRegex.phoneRegex.test(this.phoneNumber_input.value) && globalRegex.emailRegex.test(this.email_input.value) && this.budget_input.value.length >= 3) {
-				// Reset the inputs
-				this.text_field.forEach(input => {
-					input.value = '';
-					input.classList.remove('input-filled', 'input-success');
-					input.nextElementSibling.classList.remove('label-focus');
-				});
+			// If the number of correct inputs is the same as all inputs that means all the inputs are correct filled :)
+			if(filledInputs.length === this.text_field.length) {
 
-				this.alert('Form has been sent to our team !', 'success', true, null);
+				this.alert('Form has been successfully submited !', 'success', true, e.target);
 
+				// Submit the form
 				submit = true;
 			}
 
@@ -417,53 +376,72 @@ class Ui {
 		p.appendChild(document.createTextNode(message));
 
 		if(alertType === 'error') {
-			// Remove error, so we have only one
-			document.querySelectorAll('.regex-alert').forEach(error => error.remove());
+			// Remove alert, so we have only one
+			document.querySelectorAll('.regex-alert').forEach(alert => alert.remove());
 
-			// Add the error styling
+			// Add the alert styling
 			p.classList.add('regex-alert', 'text-center', 'regex-error');
 
 			if(!multiple) {
-
+				// If input is not valid remove the input correct validation class (input-filled);
+				target.classList.remove('input-filled');
 				target.classList.add('input-error');
-				p.classList.add('mb-xs');
+				
+				// For individual input add the regex alert
+				target.parentElement.insertAdjacentElement('beforeend', p);
 
-				// Add the error to specific input box
-				if(target === this.fullName_input) this.fullName_error.insertAdjacentElement('beforeend', p);
-				if(target === this.phoneNumber_input) this.phoneNumber_error.insertAdjacentElement('beforeend', p);
-				if(target === this.email_input) this.email_error.insertAdjacentElement('beforeend', p);
-				if(target === this.budget_input) this.budget_error.insertAdjacentElement('beforeend', p);
+				if(target.value === '') target.classList.remove('input-filled');
 			}
-
-			if(multiple) {
+			else {
+				// Add the regex alert to the DOM && other alert styling to elements
 				this.form.insertAdjacentElement('beforeend', p);
+				this.form_btn.style.backgroundColor = 'rgb(219, 40, 40)'; // $red-primary
 
-				setTimeout(() => document.querySelectorAll('.regex-alert').forEach(error => error.remove()), 2500);
+				this.text_field.forEach(input => input.classList.remove('input-success'));
+				
+				// Reset the regex alert
+				setTimeout(() => {
+
+					this.form_btn.style = '';
+					p.remove();
+
+				}, 2500);
+
 			}
 		}
 
 		if(alertType === 'success') {
 			
 			if(!multiple) {
-				// Remove error styling
+				// Remove alert styling
 				target.classList.remove('input-error');
-
-				target.classList.add('input-success');
+				// input-filled - If the input has been filled corectly (we check for class in regex validation for multiple inputs)
+				target.classList.add('input-success', 'input-filled');
 
 				setTimeout(() => target.classList.remove('input-success'), 1250);
 
-				// Remove error, so we have only one
-				document.querySelectorAll('.regex-alert').forEach(error => error.remove());
+				// Remove alert, so we have only one
+				document.querySelectorAll('.regex-alert').forEach(alert => alert.remove());
 			}
-
-			if(multiple) {
-				// Add the error styling
+			else {
+				// Add the alert styling
 				p.classList.add('regex-alert', 'text-center', 'regex-success');
 
-				// Add error to DOM
-				this.form.insertAdjacentElement('beforeend', p);
+				// Add alert to DOM
+				target.insertAdjacentElement('beforeend', p);
+				this.form_btn.style.backgroundColor = '#01ad54'; // $green-primary
 
-				setTimeout(() => p.remove(), 2500);
+				// Reset the regex alert
+				this.text_field.forEach(input => {
+					input.classList.remove('input-error', 'input-filled', 'input-success');
+
+					input.value = '';
+				});
+
+				setTimeout(() => {
+					this.form_btn.style = '';
+					p.remove()
+				}, 2500);
 			}
 		}
 	}
