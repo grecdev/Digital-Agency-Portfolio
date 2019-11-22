@@ -40,5 +40,4 @@ if(document.body.contains(ui.resetScroll_btn)) {
 
 		e.stopPropagation();
 	});
-
 }

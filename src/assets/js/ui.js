@@ -35,6 +35,8 @@ class Ui {
 		this.budget_input = document.getElementById('budget');
 		this.disableLetter_input = document.querySelectorAll('.letter-disabled');
 		this.text_field = document.querySelectorAll('.text-field');
+		// Regex
+		this.isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
 	}
 
 	// Header Modal Menu
@@ -56,7 +58,7 @@ class Ui {
 			document.querySelectorAll('.modal-link').forEach(link => link.classList.add('intro-link'));
 
 			// On mobile devices disable the intro animation
-			if(window.matchMedia('(min-width: 1025px)').matches) ui.shapeAnimations.forEach(shape => shape.classList.remove('left-intro', 'mid-intro', 'right-intro'))
+			if(!ui.isMobile.test(navigator.userAgent)) ui.shapeAnimations.forEach(shape => shape.classList.remove('left-intro', 'mid-intro', 'right-intro'))
 			
 			// Hide modal
 		} else if(e.currentTarget.dataset.toggle === 'hide' || e.target === ui.header_modal) {
@@ -74,7 +76,7 @@ class Ui {
 			document.getElementById('desktop-modal-menu').classList.remove('visible-flex');
 
 			// On desktop enable the intro animation
-			if(window.matchMedia('(min-width: 1025px)').matches && document.body.contains(ui.showcase)) {
+			if(!ui.isMobile.test(navigator.userAgent) && document.body.contains(ui.showcase)) {
 
 				ui.left_shape.classList.add('left-intro');
 				ui.mid_shape.classList.add('mid-intro');
@@ -92,7 +94,7 @@ class Ui {
 		const pos = window.pageYOffset;
 
 		// Enable header animation on desktop devices and home page
-		if(document.body.contains(ui.home_page) && window.matchMedia('(min-width: 1025px)').matches) {
+		if(document.body.contains(ui.home_page) && !ui.isMobile.test(navigator.userAgent)) {
 			// Disable it when header modal menu is visible
 			if(pos > 50 && !ui.header_modal.classList.contains('visible-flex')) ui.header.classList.add('header-fixed')
 			else ui.header.classList.remove('header-fixed')
@@ -115,7 +117,7 @@ class Ui {
 		}
 
 		// If we don't check for porfolio page, it gives error and bugs the whole script
-		if(location.pathname.includes('portfolio') && window.matchMedia('(min-width: 1025px)').matches) {
+		if(location.pathname.includes('portfolio') && !ui.isMobile.test(navigator.userAgent)) {
 			if(pos >= 400) ui.project_box[1].classList.add('box-visible')
 			else ui.project_box[1].classList.remove('box-visible')
 	
@@ -132,7 +134,7 @@ class Ui {
 	// Slider functionality
 	sliderNavigation(e) {
 
-		if(location.pathname.includes('portfolio') && window.matchMedia('(min-width: 1025px)').matches) {
+		if(location.pathname.includes('portfolio') && !ui.isMobile.test(navigator.userAgent)) {
 			// getPropertyValue doesn't return both margins even if i set getPropertyValue('margin')
 			const boxMargin = window.getComputedStyle(this.testimonial_box[0]).getPropertyValue('margin-left').replace(/[^\d]/g, '') * 2;
 	
@@ -463,7 +465,6 @@ class Ui {
 	}
 
 	resetScroll(e) {
-
 		if(e.type === 'click' && e.currentTarget === this.resetScroll_btn && e.currentTarget.dataset.eventToggle === 'true') {
 
 			// Disable the click on element
@@ -474,7 +475,6 @@ class Ui {
 			// Enable the click on element
 			setTimeout(() => this.resetScroll_btn.setAttribute('data-event-toggle', 'true'), 1000);
 		}
-		
 	}
 }
 
