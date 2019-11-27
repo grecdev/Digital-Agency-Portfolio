@@ -109,7 +109,7 @@ header {
 			z-index: -1;
 		}
 	
-		&:hover::before { transform: translate(-50%, -50%) scaleX(1) }
+		&.active-page::before, &:hover::before { transform: translate(-50%, -50%) scaleX(1) }
 	}
 }
 
