@@ -1,23 +1,58 @@
 # Digital Grec
-Website for a fictional digital agency. For personal portofolio.
+
+Your design dream, can now be fulfilled.
+
+:computer: Live preview: [in progress]()
 
 ### To properly run the website on your local machine:
 
-`npm install` - To install all dependencies / modules
+**Installing:**
 
-`npm start` - To run development server on your local machine (`localhost`)
+1. [Node.js](https://nodejs.org/en/download/)
 
-`npm run build` - To get all production files
+2. [node package manager](https://docs.npmjs.com/about-npm/), run the following command in the `CLI` (command line interface):
+```
+npm install -g npm@latest
+```
+3. Install all `dependencies / modules`, run the following command in the `CLI` (command line interface):
+```
+npm install
+```
 
-##### I used the following technologies for this project:
+**To browse the website**:
 
-- Webpack
-  - Babel - downgrade some javascript features
-  - Html / Javascript / Css - minified files
-  - Webpack dev server ( for development )
-- Sass
+1. `npm start` - To run development server on your local machine (`localhost`)
+
+2. `npm run build` - To get all production files
+
+### I used the following technologies for this project:
+
+- Semantic HTML5
+- [Sass](https://sass-lang.com/) (with `.scss` extension / syntax, see more details [here](https://sass-lang.com/documentation/syntax))
 - Media Queries ( Responsive Design )
 - Vanilla Javascript
-- Semantic HTML5
+- [Jump.js](http://callmecavs.com/jump.js/) library for smooth scroll
+- [Webpack](https://github.com/webpack/webpack)
+- For `version control system` i used [Git](https://git-scm.com/)
 
-**Refresh the page and Resize page to 100% after choosing responsive device (Dumb chrome have bugs and can ruin my website review)**
+### Features for this website:
+
+1. Smooth Scroll (more on services page)
+2. Form regex validation (see on contact page)
+3. Home page intro showcase and header animation
+4. Testimonial Slider (see on portfolio page)
+
+### :bowtie: Contribuitors:
+
+Grecu Alexandru aka [`grecdev`]()
+
+### License:
+
+This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/grecdev/FitnessClub-Gym-Portfolio/blob/master/LICENSE.md) file for details
+
+***Additional information:***
+
+:iphone: Check for `responsive design` in chrome: 
+
+1. Open `developer console` pressing `F12`
+2. Click on the `Toggle Device Toolbar` button or press `Ctrl + Shift + M`
