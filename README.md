@@ -45,7 +45,7 @@ npm install
 
 ### :bowtie: Contribuitors:
 
-Grecu Alexandru aka [`grecdev`]()
+Grecu Alexandru aka [`grecdev`](https://github.com/grecdev)
 
 ### License:
 
