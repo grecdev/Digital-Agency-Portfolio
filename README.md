@@ -39,9 +39,9 @@ npm install
 
 ### Features for this website:
 
-1. Form regex validation (see on contact page)
+1. Form regex validation
 2. Home page intro showcase and header animation
-3. Testimonial Slider (see on portfolio page)
+3. Testimonial Slider
 
 ### :bowtie: Contribuitors:
 
