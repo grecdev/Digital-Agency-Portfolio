@@ -1,6 +1,6 @@
 # Digital Grec
 
-Your design dream, can now be fulfilled.
+Have a crazy idea in mind ? You came to the right place, we are crazy too and your digital dream can now be fulfilled.
 
 :computer: Live preview: [in progress]()
 
@@ -29,7 +29,7 @@ npm install
 
 ### I used the following technologies for this project:
 
-- Semantic HTML5
+- HTML5
 - [Sass](https://sass-lang.com/) (with `.scss` extension / syntax, see more details [here](https://sass-lang.com/documentation/syntax))
 - Media Queries ( Responsive Design )
 - Vanilla Javascript
@@ -40,7 +40,7 @@ npm install
 ### Features for this website:
 
 1. Form regex validation
-2. Home page intro showcase and header animation
+2. [Smooth scroll](http://callmecavs.com/jump.js/)
 3. Testimonial Slider
 
 ### :bowtie: Contribuitors:
