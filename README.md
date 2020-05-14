@@ -35,6 +35,7 @@ npm install
 - Vanilla Javascript
 - [Webpack](https://github.com/webpack/webpack)
 - For `version control system` i used [Git](https://git-scm.com/)
+- npm
 
 ### Features for this website:
 
