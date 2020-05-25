@@ -2,7 +2,7 @@
 
 Have a crazy idea in mind ? You came to the right place, we are crazy too and your digital dream can now be fulfilled.
 
-:computer: Live preview: [in progress]()
+:computer: [Live preview](https://digitalgrec.grec.dev/)
 
 ### To properly run the website on your local machine:
 
@@ -12,11 +12,14 @@ Have a crazy idea in mind ? You came to the right place, we are crazy too and yo
 
 2. Make sure you have the latest version of [Node.js](https://nodejs.org/en/download/)
 
-2. [node package manager](https://docs.npmjs.com/about-npm/), run the following command in the `CLI` (command line interface):
+3. [node package manager](https://docs.npmjs.com/about-npm/), run the following command in the `CLI` (command line interface):
+
 ```
 npm install -g npm@latest
 ```
+
 4. Install all `dependencies / modules`, run the following command in the `CLI` (command line interface):
+
 ```
 npm install
 ```
@@ -51,9 +54,9 @@ Grecu Alexandru aka [`grecdev`](https://github.com/grecdev)
 
 This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/grecdev/Digital-Agency-Portfolio/blob/master/LICENSE.md) file for details
 
-***Additional information:***
+**_Additional information:_**
 
-:iphone: Check for `responsive design` in chrome: 
+:iphone: Check for `responsive design` in chrome:
 
 1. Open `developer console` pressing `F12`
 2. Click on the `Toggle Device Toolbar` button or press `Ctrl + Shift + M`
